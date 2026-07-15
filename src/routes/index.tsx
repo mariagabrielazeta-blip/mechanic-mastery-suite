@@ -6,6 +6,8 @@ import logoAsset from "@/assets/logo.png.asset.json";
 import heroVideoAsset from "@/assets/hero.mp4.asset.json";
 import mechanicAsset from "@/assets/mechanic-engine.png.asset.json";
 const mechanicImg = mechanicAsset.url;
+import ctaMechanicAsset from "@/assets/cta-mechanic.png.asset.json";
+const ctaMechanicImg = ctaMechanicAsset.url;
 import customerImg from "@/assets/customer.jpg";
 import dashboardImg from "@/assets/dashboard.jpg";
 
