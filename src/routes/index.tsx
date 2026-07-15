@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, ClipboardList, Package, Wallet, Users, BarChart3, Check, X, Menu } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, ClipboardList, Package, Wallet, Users, BarChart3, X, Menu, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import logoAsset from "@/assets/logo.png.asset.json";
 import heroVideoAsset from "@/assets/hero.mp4.asset.json";
@@ -10,9 +10,6 @@ const mechanicImg = mechanicAsset.url;
 const receptionImg = receptionAsset.url;
 import customerImg from "@/assets/customer.jpg";
 import teamImg from "@/assets/team.jpg";
-import t1 from "@/assets/testimonial-1.jpg";
-import t2 from "@/assets/testimonial-2.jpg";
-import t3 from "@/assets/testimonial-3.jpg";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -28,7 +25,6 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { label: "Soluções", href: "#solucao" },
   { label: "Funcionalidades", href: "#funcionalidades" },
-  { label: "Clientes", href: "#clientes" },
   { label: "Planos", href: "#planos" },
   { label: "Contato", href: "#contato" },
 ];
@@ -58,29 +54,42 @@ const FEATURES = [
   { icon: BarChart3, title: "Relatórios e Indicadores", body: "Decisões baseadas em dados: produtividade, faturamento e margem por serviço." },
 ];
 
-const TESTIMONIALS = [
-  {
-    quote:
-      "Em 90 dias organizamos toda a oficina. As ordens de serviço deixaram de sumir e o financeiro finalmente fecha no fim do mês.",
-    name: "Rafael Almeida",
-    role: "Proprietário — Almeida Auto Center",
-    img: t1,
-  },
-  {
-    quote:
-      "O histórico completo do cliente mudou o nosso atendimento. Hoje o cliente sente confiança porque sabemos exatamente o que o carro dele precisa.",
-    name: "Carolina Meireles",
-    role: "Gerente — Meireles Mecânica",
-    img: t2,
-  },
-  {
-    quote:
-      "Passamos a enxergar a margem de cada serviço. Isso mudou a forma como precificamos e como negociamos com fornecedores.",
-    name: "José Henrique",
-    role: "Sócio-diretor — JH Motors",
-    img: t3,
-  },
-];
+function Reveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
 
 function Logo({ className = "h-9" }: { className?: string }) {
   return (
@@ -172,8 +181,8 @@ function Home() {
         )}
       </header>
 
-      {/* HERO */}
-      <section className="relative min-h-[100svh] w-full overflow-hidden bg-ink">
+      {/* HERO — vídeo cristalino, texto minimalista (estilo Ferrari) */}
+      <section className="relative h-[100svh] w-full overflow-hidden bg-ink">
         <video
           className="absolute inset-0 h-full w-full object-cover"
           src={heroVideoAsset.url}
@@ -183,17 +192,38 @@ function Home() {
           playsInline
           poster={mechanicImg}
         />
-        {/* Bright, cinematic gradient — keeps video crystal clear on the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/55 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink to-transparent" />
+        {/* Overlay sutil só para dar contraste ao texto branco */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/40" />
 
-        <div className="relative container-x flex min-h-[100svh] flex-col justify-end pb-24 pt-32 md:justify-center md:pt-24">
+        <div className="relative flex h-full flex-col items-center justify-end pb-32 text-center">
+          <span className="eyebrow text-white/80 mb-4">
+            ERP para oficinas mecânicas
+          </span>
+          <h1 className="text-white text-4xl md:text-6xl font-normal tracking-[0.12em] [text-shadow:0_4px_16px_rgba(0,0,0,0.45)]">
+            SUPER FAST
+          </h1>
+        </div>
+
+        <a
+          href="#proxima-secao"
+          aria-label="Rolar para baixo"
+          className="scroll-arrow z-10 text-white transition-opacity hover:opacity-70"
+        >
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 9L12 17L20 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
+      </section>
+
+      {/* INTRO — bloco de texto principal, logo abaixo do vídeo */}
+      <section id="proxima-secao" className="bg-ink text-white py-24 md:py-32">
+        <div className="container-x">
           <div className="max-w-3xl">
             <div className="mb-6 flex items-center gap-3 text-white/70">
               <div className="h-px w-10 bg-primary" />
               <span className="eyebrow">ERP para oficinas mecânicas</span>
             </div>
-            <h1 className="text-white text-[13vw] leading-[0.92] md:text-[6.5rem] lg:text-[7.5rem] font-normal">
+            <h2 className="text-white text-6xl md:text-8xl lg:text-[7rem] leading-[0.92]">
               A OFICINA
               <br />
               NÃO PARA.
@@ -201,7 +231,7 @@ function Home() {
               <span className="text-primary">SUA GESTÃO</span>
               <br />
               <span className="text-primary">TAMBÉM NÃO.</span>
-            </h1>
+            </h2>
             <p className="mt-8 max-w-xl text-base md:text-lg text-white/80 leading-relaxed">
               Controle ordens de serviço, estoque, financeiro, atendimento e
               indicadores em um único sistema desenvolvido para a rotina real
@@ -220,24 +250,19 @@ function Home() {
         </div>
       </section>
 
-      {/* BENEFITS BAR */}
-      <section className="bg-primary text-white">
-        <div className="container-x">
-          <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 divide-x divide-white/15 border-y border-white/15">
-            {BENEFITS.map((b, i) => (
-              <li
-                key={b}
-                className="flex items-center gap-3 py-5 px-4 md:px-6 first:pl-0 last:pr-0"
-              >
-                <span className="font-display text-xl text-white/40 w-8 shrink-0">
-                  0{i + 1}
-                </span>
-                <span className="text-sm md:text-[15px] font-semibold uppercase tracking-wide leading-tight">
-                  {b}
-                </span>
-              </li>
-            ))}
-          </ul>
+      {/* BENEFITS BAR — carrossel infinito */}
+      <section className="bg-primary text-white overflow-hidden border-y border-white/15">
+        <div className="marquee-track py-5">
+          {[...BENEFITS, ...BENEFITS].map((b, i) => (
+            <div key={i} className="flex shrink-0 items-center gap-3 px-8 md:px-12">
+              <span className="font-display text-xl text-white/40">
+                0{(i % BENEFITS.length) + 1}
+              </span>
+              <span className="whitespace-nowrap text-sm md:text-[15px] font-semibold uppercase tracking-wide">
+                {b}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -293,10 +318,15 @@ function Home() {
             </div>
             <ul className="mt-10 divide-y divide-hairline border-y border-hairline">
               {PROBLEMS.map((p, i) => (
-                <li key={p} className="grid grid-cols-[3rem_1fr_auto] items-center gap-4 py-5">
-                  <span className="font-display text-primary text-lg">0{i + 1}</span>
-                  <span className="text-lg md:text-xl font-semibold text-ink">{p}</span>
-                  <X className="h-5 w-5 text-primary shrink-0" strokeWidth={2.5} />
+                <li key={p}>
+                  <Reveal
+                    delay={i * 100}
+                    className="grid grid-cols-[3rem_1fr_auto] items-center gap-4 py-5"
+                  >
+                    <span className="font-display text-primary text-lg">0{i + 1}</span>
+                    <span className="text-lg md:text-xl font-semibold text-ink">{p}</span>
+                    <X className="h-5 w-5 text-primary shrink-0" strokeWidth={2.5} />
+                  </Reveal>
                 </li>
               ))}
             </ul>
@@ -383,54 +413,6 @@ function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section id="clientes" className="py-24 md:py-32">
-        <div className="container-x">
-          <div className="max-w-3xl mb-16">
-            <div className="mb-5 flex items-center gap-3 text-ink-soft">
-              <div className="h-px w-10 bg-primary" />
-              <span className="eyebrow text-primary">Clientes</span>
-            </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl">
-              Oficinas que transformaram
-              <br />
-              sua gestão com a{" "}
-              <span className="text-primary">Super Fast.</span>
-            </h2>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((t) => (
-              <article
-                key={t.name}
-                className="group border border-hairline hover:border-ink transition-colors bg-white flex flex-col"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={t.img}
-                    alt={t.name}
-                    loading="lazy"
-                    width={800}
-                    height={600}
-                    className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                  />
-                  <div className="absolute top-4 left-4 bg-primary text-white h-10 w-10 grid place-items-center">
-                    <Check className="h-5 w-5" strokeWidth={3} />
-                  </div>
-                </div>
-                <div className="p-7 flex flex-col gap-6 flex-1">
-                  <p className="text-lg leading-snug text-ink">"{t.quote}"</p>
-                  <div className="mt-auto pt-6 border-t border-hairline">
-                    <div className="font-semibold text-ink">{t.name}</div>
-                    <div className="text-sm text-ink-soft mt-0.5">{t.role}</div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FINAL CTA */}
       <section id="contato" className="relative overflow-hidden bg-ink text-white">
         <img
@@ -444,8 +426,7 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
         <div className="relative container-x py-28 md:py-40">
           <div className="max-w-3xl">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="h-px w-10 bg-primary" />
+            <div className="mb-6">
               <span className="eyebrow text-primary">Fale com a Super Fast</span>
             </div>
             <h2 className="text-5xl md:text-7xl lg:text-8xl text-white">
@@ -457,14 +438,11 @@ function Home() {
             </h2>
             <p className="mt-8 max-w-xl text-lg text-white/75 leading-relaxed">
               Solicite uma demonstração e descubra como a Super Fast pode
-              simplificar a gestão da sua operação — sem burocracia, sem
+              simplificar a gestão da sua operação, sem burocracia e sem
               complicação.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-10">
               <CtaButton variant="primary">Solicitar Demonstração</CtaButton>
-              <CtaButton variant="ghost" href="#solucao">
-                Ver funcionalidades
-              </CtaButton>
             </div>
           </div>
         </div>
@@ -472,7 +450,7 @@ function Home() {
 
       {/* FOOTER */}
       <footer className="bg-ink text-white/60 border-t border-white/10">
-        <div className="container-x py-14 grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="container-x py-14 grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">
               <img src={logoAsset.url} alt="Super Fast" className="h-8 w-auto" />
@@ -484,22 +462,40 @@ function Home() {
               O ERP feito para a rotina real das oficinas mecânicas brasileiras.
             </p>
           </div>
-          {[
-            { t: "Produto", i: ["Ordens de Serviço", "Estoque", "Financeiro", "Relatórios"] },
-            { t: "Empresa", i: ["Sobre", "Clientes", "Planos", "Contato"] },
-            { t: "Suporte", i: ["Central de Ajuda", "Treinamentos", "Status", "WhatsApp"] },
-          ].map((c) => (
-            <div key={c.t}>
-              <div className="eyebrow text-white mb-4">{c.t}</div>
-              <ul className="space-y-2.5 text-sm">
-                {c.i.map((x) => (
-                  <li key={x}>
-                    <a href="#" className="hover:text-white transition-colors">{x}</a>
-                  </li>
-                ))}
-              </ul>
+          <div>
+            <div className="eyebrow text-white mb-4">Contato</div>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-primary shrink-0" />
+                <a href="tel:+5511999999999" className="hover:text-white transition-colors">
+                  (11) 99999-9999
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-primary shrink-0" />
+                <a href="mailto:contato@superfast.com.br" className="hover:text-white transition-colors">
+                  contato@superfast.com.br
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Clock className="h-4 w-4 text-primary shrink-0" />
+                <span>Seg. a Sex., das 8h às 18h</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div className="eyebrow text-white mb-4">Endereço</div>
+            <div className="flex items-start gap-3 text-sm leading-relaxed">
+              <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+              <address className="not-italic">
+                Av. Exemplo, 1234 — Sala 56
+                <br />
+                Centro, São Paulo — SP
+                <br />
+                CEP 01000-000
+              </address>
             </div>
-          ))}
+          </div>
         </div>
         <div className="border-t border-white/10">
           <div className="container-x py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-white/40">
