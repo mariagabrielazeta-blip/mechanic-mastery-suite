@@ -8,6 +8,7 @@ import mechanicAsset from "@/assets/mechanic-engine.png.asset.json";
 const mechanicImg = mechanicAsset.url;
 import customerImg from "@/assets/customer.jpg";
 import dashboardImg from "@/assets/dashboard.jpg";
+import receptionImg from "@/assets/customer-keys.png.asset.json";
 
 // O efeito 3D (three.js) é pesado — carrega dinamicamente após a montagem
 // para não atrasar o primeiro carregamento da página.
