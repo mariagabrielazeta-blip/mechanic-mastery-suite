@@ -4,8 +4,8 @@ import { useState } from "react";
 
 import logoAsset from "@/assets/logo.png.asset.json";
 import heroVideoAsset from "@/assets/hero.mp4.asset.json";
-import mechanicImg from "@/assets/mechanic-working.jpg";
-import receptionImg from "@/assets/reception.jpg";
+import mechanicImg from "@/assets/mechanic-engine.png.asset.json";
+import receptionImg from "@/assets/customer-keys.png.asset.json";
 import customerImg from "@/assets/customer.jpg";
 import teamImg from "@/assets/team.jpg";
 import t1 from "@/assets/testimonial-1.jpg";
