@@ -432,29 +432,29 @@ function Home() {
       </section>
 
       {/* FINAL CTA */}
-      <section id="contato" className="relative overflow-hidden bg-ink text-white">
+      <section id="contato" className="relative overflow-hidden bg-[#f5f5f7] text-ink">
         <img
           src={customerImg}
           alt=""
           loading="lazy"
           width={1280}
           height={960}
-          className="absolute inset-0 h-full w-full object-cover opacity-25"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.08]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/50" />
         <div className="relative container-x py-28 md:py-40">
           <div className="max-w-3xl">
             <div className="mb-6">
               <span className="eyebrow text-primary">Fale com a Super Fast</span>
             </div>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl text-white">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl text-ink">
               Sua oficina merece
               <br />
               mais <span className="text-primary">controle</span>
               <br />
               e mais <span className="text-primary">resultado.</span>
             </h2>
-            <p className="mt-8 max-w-xl text-lg text-white/75 leading-relaxed">
+            <p className="mt-8 max-w-xl text-lg text-ink/75 leading-relaxed">
               Solicite uma demonstração e descubra como a Super Fast pode
               simplificar a gestão da sua operação, sem burocracia e sem
               complicação.
