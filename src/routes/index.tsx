@@ -6,7 +6,8 @@ import logoAsset from "@/assets/logo.png.asset.json";
 import heroVideoAsset from "@/assets/hero.mp4.asset.json";
 import mechanicAsset from "@/assets/mechanic-engine.png.asset.json";
 const mechanicImg = mechanicAsset.url;
-import customerImg from "@/assets/customer.jpg";
+import ctaMechanicAsset from "@/assets/cta-mechanic.png.asset.json";
+const ctaMechanicImg = ctaMechanicAsset.url;
 import dashboardImg from "@/assets/dashboard.jpg";
 
 export const Route = createFileRoute("/")({
@@ -434,14 +435,14 @@ function Home() {
       {/* FINAL CTA */}
       <section id="contato" className="relative overflow-hidden bg-[#f5f5f7] text-ink">
         <img
-          src={customerImg}
-          alt="Atendimento em oficina mecânica Super Fast"
+          src={ctaMechanicImg}
+          alt="Mecânico Super Fast trabalhando em motor de veículo"
           loading="lazy"
           width={1280}
           height={960}
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.45]"
+          className="absolute inset-0 h-full w-full object-cover opacity-100 contrast-125 saturate-[1.15]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/60 to-white/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/35 via-white/15 to-transparent" />
         <div className="relative container-x py-28 md:py-40">
           <div className="max-w-3xl">
             <div className="mb-6">
