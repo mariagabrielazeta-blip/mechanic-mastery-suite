@@ -452,14 +452,14 @@ function Home() {
       {/* FINAL CTA */}
       <section id="contato" className="relative overflow-hidden bg-[#f5f5f7] text-ink">
         <img
-          src={customerImg}
-          alt=""
+          src={receptionImg.url}
+          alt="Recepção de oficina mecânica Super Fast"
           loading="lazy"
           width={1280}
           height={960}
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.08]"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.45]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/60 to-white/25" />
         <div className="relative container-x py-28 md:py-40">
           <div className="max-w-3xl">
             <div className="mb-6">
