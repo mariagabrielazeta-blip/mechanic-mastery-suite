@@ -440,7 +440,7 @@ function Home() {
           loading="lazy"
           width={1280}
           height={960}
-          className="absolute inset-0 h-full w-full object-cover opacity-100"
+          className="absolute inset-0 h-full w-full object-cover opacity-100 contrast-125 saturate-[1.15]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white/35 via-white/15 to-transparent" />
         <div className="relative container-x py-28 md:py-40">
