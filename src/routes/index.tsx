@@ -440,9 +440,9 @@ function Home() {
           loading="lazy"
           width={1280}
           height={960}
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.45]"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.65]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/60 to-white/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/45 to-white/15" />
         <div className="relative container-x py-28 md:py-40">
           <div className="max-w-3xl">
             <div className="mb-6">
