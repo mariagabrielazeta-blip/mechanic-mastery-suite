@@ -9,6 +9,22 @@ const mechanicImg = mechanicAsset.url;
 import customerImg from "@/assets/customer.jpg";
 import dashboardImg from "@/assets/dashboard.jpg";
 
+// O efeito 3D (three.js) é pesado — carrega dinamicamente após a montagem
+// para não atrasar o primeiro carregamento da página.
+function LazyTurbine() {
+  const [Comp, setComp] = useState<React.ComponentType | null>(null);
+  useEffect(() => {
+    let alive = true;
+    import("@/components/TurbineBackdrop").then((m) => {
+      if (alive) setComp(() => m.default);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return Comp ? <Comp /> : null;
+}
+
 export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
@@ -167,6 +183,7 @@ function Home() {
   return (
     <div id="top" className="bg-white text-ink">
       <Preloader />
+      <LazyTurbine />
       {/* NAV */}
       <header className="absolute inset-x-0 top-0 z-50">
         <div className="container-x flex h-20 items-center justify-between">
@@ -302,7 +319,7 @@ function Home() {
       </section>
 
       {/* PROBLEMS */}
-      <section className="py-24 md:py-32">
+      <section id="problemas" className="py-24 md:py-32">
         <div className="container-x">
           <div className="max-w-3xl mb-16">
             <div className="mb-5 flex items-center gap-3 text-ink-soft">
