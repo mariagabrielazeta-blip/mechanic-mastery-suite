@@ -436,8 +436,8 @@ function Home() {
       {/* FINAL CTA */}
       <section id="contato" className="relative overflow-hidden bg-[#f5f5f7] text-ink">
         <img
-          src={customerImg}
-          alt="Atendimento em oficina mecânica Super Fast"
+          src={ctaMechanicImg}
+          alt="Mecânico Super Fast trabalhando em motor de veículo"
           loading="lazy"
           width={1280}
           height={960}
