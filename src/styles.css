@@ -122,6 +122,21 @@
   transform: translateY(0);
 }
 
+/* Logo pulsando no preloader */
+@keyframes logo-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(220, 38, 38, 0));
+  }
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 28px rgba(220, 38, 38, 0.55));
+  }
+}
+.preloader-logo {
+  animation: logo-pulse 1.6s ease-in-out infinite;
+}
+
 /* Seta do hero (efeito bounce) */
 @keyframes bounce-arrow {
   0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }

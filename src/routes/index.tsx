@@ -1,15 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, ClipboardList, Package, Wallet, Users, BarChart3, X, Menu, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { ArrowRight, ClipboardList, Package, Wallet, Users, BarChart3, X, Menu, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import logoAsset from "@/assets/logo.png.asset.json";
 import heroVideoAsset from "@/assets/hero.mp4.asset.json";
 import mechanicAsset from "@/assets/mechanic-engine.png.asset.json";
-import receptionAsset from "@/assets/customer-keys.png.asset.json";
 const mechanicImg = mechanicAsset.url;
-const receptionImg = receptionAsset.url;
 import customerImg from "@/assets/customer.jpg";
-import teamImg from "@/assets/team.jpg";
+import dashboardImg from "@/assets/dashboard.jpg";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -91,6 +89,42 @@ function Reveal({
   );
 }
 
+function Preloader() {
+  const [loaded, setLoaded] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const done = () => {
+      setLoaded(true);
+      timer = setTimeout(() => setHidden(true), 700);
+    };
+    if (document.readyState === "complete") {
+      done();
+    } else {
+      window.addEventListener("load", done);
+    }
+    return () => {
+      window.removeEventListener("load", done);
+      clearTimeout(timer);
+    };
+  }, []);
+  if (hidden) return null;
+  return (
+    <div
+      aria-hidden="true"
+      className={`fixed inset-0 z-[9999] grid place-items-center bg-black transition-opacity duration-700 ease-out ${
+        loaded ? "opacity-0 pointer-events-none" : "opacity-100"
+      }`}
+    >
+      <img
+        src={logoAsset.url}
+        alt="Super Fast"
+        className="preloader-logo h-20 w-auto"
+      />
+    </div>
+  );
+}
+
 function Logo({ className = "h-9" }: { className?: string }) {
   return (
     <a href="#top" className="flex items-center gap-2.5 shrink-0">
@@ -132,6 +166,7 @@ function Home() {
   const [open, setOpen] = useState(false);
   return (
     <div id="top" className="bg-white text-ink">
+      <Preloader />
       {/* NAV */}
       <header className="absolute inset-x-0 top-0 z-50">
         <div className="container-x flex h-20 items-center justify-between">
@@ -268,8 +303,8 @@ function Home() {
 
       {/* PROBLEMS */}
       <section className="py-24 md:py-32">
-        <div className="container-x grid gap-16 lg:grid-cols-12 lg:gap-20 items-start">
-          <div className="lg:col-span-5">
+        <div className="container-x">
+          <div className="max-w-3xl mb-16">
             <div className="mb-5 flex items-center gap-3 text-ink-soft">
               <div className="h-px w-10 bg-primary" />
               <span className="eyebrow text-primary">O problema</span>
@@ -277,9 +312,7 @@ function Home() {
             <h2 className="text-5xl md:text-6xl lg:text-7xl">
               Problemas que
               <br />
-              custam tempo
-              <br />
-              e dinheiro
+              custam tempo e dinheiro
               <br />
               <span className="text-primary">todos os dias.</span>
             </h2>
@@ -289,34 +322,19 @@ function Home() {
               começam a perceber.
             </p>
           </div>
-          <div className="lg:col-span-7">
-            <div className="grid grid-cols-2 gap-3">
+
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+            <Reveal>
               <img
-                src={mechanicImg}
-                alt="Mecânico trabalhando no motor"
+                src={dashboardImg}
+                alt="Sistema Super Fast em um tablet e um monitor com o dashboard"
                 loading="lazy"
-                width={1280}
-                height={960}
-                className="col-span-2 h-72 md:h-96 w-full object-cover"
+                width={1600}
+                height={790}
+                className="w-full rounded-lg object-cover"
               />
-              <img
-                src={receptionImg}
-                alt="Atendimento profissional na recepção"
-                loading="lazy"
-                width={1280}
-                height={960}
-                className="h-48 md:h-64 w-full object-cover"
-              />
-              <img
-                src={teamImg}
-                alt="Equipe analisando serviço"
-                loading="lazy"
-                width={1280}
-                height={960}
-                className="h-48 md:h-64 w-full object-cover"
-              />
-            </div>
-            <ul className="mt-10 divide-y divide-hairline border-y border-hairline">
+            </Reveal>
+            <ul className="divide-y divide-hairline border-y border-hairline">
               {PROBLEMS.map((p, i) => (
                 <li key={p}>
                   <Reveal
@@ -449,53 +467,61 @@ function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-ink text-white/60 border-t border-white/10">
-        <div className="container-x py-14 grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
-          <div>
-            <div className="flex items-center gap-2.5">
-              <img src={logoAsset.url} alt="Super Fast" className="h-8 w-auto" />
-              <span className="font-display text-lg text-white">
-                SUPER<span className="text-primary">FAST</span>
-              </span>
-            </div>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed">
-              O ERP feito para a rotina real das oficinas mecânicas brasileiras.
-            </p>
-          </div>
-          <div>
-            <div className="eyebrow text-white mb-4">Contato</div>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary shrink-0" />
-                <a href="tel:+5511999999999" className="hover:text-white transition-colors">
-                  (11) 99999-9999
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-primary shrink-0" />
-                <a href="mailto:contato@superfast.com.br" className="hover:text-white transition-colors">
-                  contato@superfast.com.br
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Clock className="h-4 w-4 text-primary shrink-0" />
-                <span>Seg. a Sex., das 8h às 18h</span>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div className="eyebrow text-white mb-4">Endereço</div>
-            <div className="flex items-start gap-3 text-sm leading-relaxed">
-              <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-              <address className="not-italic">
-                Av. Exemplo, 1234 — Sala 56
-                <br />
-                Centro, São Paulo — SP
-                <br />
-                CEP 01000-000
-              </address>
-            </div>
-          </div>
+      <footer className="bg-black text-white/60">
+        <div className="container-x py-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            {
+              icon: Mail,
+              title: "E-mail",
+              text: "contato@sfast.com.br",
+              href: "mailto:contato@sfast.com.br",
+            },
+            {
+              icon: MessageCircle,
+              title: "WhatsApp",
+              text: "(+55) (51) 9.8427.7489",
+              href: "https://wa.me/5551984277489",
+            },
+            {
+              icon: Phone,
+              title: "Telefone",
+              text: "(+55) (51) 3330.7755",
+              href: "tel:+555133307755",
+            },
+            {
+              icon: MapPin,
+              title: "Endereço",
+              text: "Rua 24 de Outubro, 1299/501 | Porto Alegre/RS · 90510-003",
+              href: undefined,
+            },
+          ].map((c) => {
+            const inner = (
+              <>
+                <div className="grid h-14 w-14 place-items-center rounded-full border border-primary/60 text-primary">
+                  <c.icon className="h-6 w-6" strokeWidth={1.75} />
+                </div>
+                <div className="eyebrow text-white">{c.title}</div>
+                <p className="text-sm leading-relaxed text-white/70">{c.text}</p>
+              </>
+            );
+            const cardClass =
+              "flex flex-col items-center gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-8 text-center transition-colors";
+            return c.href ? (
+              <a
+                key={c.title}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel={c.href.startsWith("http") ? "noreferrer" : undefined}
+                className={`${cardClass} hover:border-primary/50 hover:bg-white/[0.06]`}
+              >
+                {inner}
+              </a>
+            ) : (
+              <div key={c.title} className={cardClass}>
+                {inner}
+              </div>
+            );
+          })}
         </div>
         <div className="border-t border-white/10">
           <div className="container-x py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-white/40">
