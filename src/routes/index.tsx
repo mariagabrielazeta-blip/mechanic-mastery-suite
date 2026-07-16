@@ -252,109 +252,7 @@ function Home() {
         </a>
       </section>
 
-      {/* INTRO — bloco de texto principal, logo abaixo do vídeo */}
-      <section id="proxima-secao" className="bg-ink text-white py-24 md:py-32">
-        <div className="container-x">
-          <div className="max-w-3xl">
-            <div className="mb-6 flex items-center gap-3 text-white/70">
-              <div className="h-px w-10 bg-primary" />
-              <span className="eyebrow">ERP para oficinas mecânicas</span>
-            </div>
-            <h2 className="text-white text-6xl md:text-8xl lg:text-[7rem] leading-[0.92]">
-              A OFICINA
-              <br />
-              NÃO PARA.
-              <br />
-              <span className="text-primary">SUA GESTÃO</span>
-              <br />
-              <span className="text-primary">TAMBÉM NÃO.</span>
-            </h2>
-            <p className="mt-8 max-w-xl text-base md:text-lg text-white/80 leading-relaxed">
-              Controle ordens de serviço, estoque, financeiro, atendimento e
-              indicadores em um único sistema desenvolvido para a rotina real
-              das oficinas.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <CtaButton variant="primary">Solicitar Demonstração</CtaButton>
-              <a
-                href="#solucao"
-                className="text-sm font-semibold uppercase tracking-[0.14em] text-white/80 hover:text-white border-b border-white/30 pb-1"
-              >
-                Ver funcionalidades
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* BENEFITS BAR — carrossel infinito */}
-      <section className="bg-primary text-white overflow-hidden border-y border-white/15">
-        <div className="marquee-track py-5">
-          {[...BENEFITS, ...BENEFITS].map((b, i) => (
-            <div key={i} className="flex shrink-0 items-center gap-3 px-8 md:px-12">
-              <span className="font-display text-xl text-white/40">
-                0{(i % BENEFITS.length) + 1}
-              </span>
-              <span className="whitespace-nowrap text-sm md:text-[15px] font-semibold uppercase tracking-wide">
-                {b}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* PROBLEMS */}
-      <section id="problemas" className="py-24 md:py-32">
-        <div className="container-x">
-          <div className="max-w-3xl mb-16">
-            <div className="mb-5 flex items-center gap-3 text-ink-soft">
-              <div className="h-px w-10 bg-primary" />
-              <span className="eyebrow text-primary">O problema</span>
-            </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl">
-              Problemas que
-              <br />
-              custam tempo e dinheiro
-              <br />
-              <span className="text-primary">todos os dias.</span>
-            </h2>
-            <p className="mt-8 max-w-md text-ink-soft leading-relaxed">
-              Toda oficina cresce até o ponto em que o improviso começa a
-              atrapalhar. É aí que os números param de fechar e os clientes
-              começam a perceber.
-            </p>
-          </div>
-
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-            <Reveal>
-              <img
-                src={dashboardImg}
-                alt="Sistema Super Fast em um tablet e um monitor com o dashboard"
-                loading="lazy"
-                width={1600}
-                height={790}
-                className="w-full rounded-lg object-cover"
-              />
-            </Reveal>
-            <ul className="divide-y divide-hairline border-y border-hairline">
-              {PROBLEMS.map((p, i) => (
-                <li key={p}>
-                  <Reveal
-                    delay={i * 100}
-                    className="grid grid-cols-[3rem_1fr_auto] items-center gap-4 py-5"
-                  >
-                    <span className="font-display text-primary text-lg">0{i + 1}</span>
-                    <span className="text-lg md:text-xl font-semibold text-ink">{p}</span>
-                    <X className="h-5 w-5 text-primary shrink-0" strokeWidth={2.5} />
-                  </Reveal>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* SOLUTION */}
+      {/* SOLUTION (movida para a 2ª sessão) */}
       <section id="solucao" className="bg-ink text-white py-24 md:py-32">
         <div className="container-x">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16 items-end mb-16">
@@ -432,6 +330,110 @@ function Home() {
           </div>
         </div>
       </section>
+
+
+      {/* BENEFITS BAR — carrossel infinito */}
+      <section className="bg-primary text-white overflow-hidden border-y border-white/15">
+        <div className="marquee-track py-5">
+          {[...BENEFITS, ...BENEFITS].map((b, i) => (
+            <div key={i} className="flex shrink-0 items-center gap-3 px-8 md:px-12">
+              <span className="font-display text-xl text-white/40">
+                0{(i % BENEFITS.length) + 1}
+              </span>
+              <span className="whitespace-nowrap text-sm md:text-[15px] font-semibold uppercase tracking-wide">
+                {b}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PROBLEMS */}
+      <section id="problemas" className="py-24 md:py-32">
+        <div className="container-x">
+          <div className="max-w-3xl mb-16">
+            <div className="mb-5 flex items-center gap-3 text-ink-soft">
+              <div className="h-px w-10 bg-primary" />
+              <span className="eyebrow text-primary">O problema</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl">
+              Problemas que
+              <br />
+              custam tempo e dinheiro
+              <br />
+              <span className="text-primary">todos os dias.</span>
+            </h2>
+            <p className="mt-8 max-w-md text-ink-soft leading-relaxed">
+              Toda oficina cresce até o ponto em que o improviso começa a
+              atrapalhar. É aí que os números param de fechar e os clientes
+              começam a perceber.
+            </p>
+          </div>
+
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+            <Reveal>
+              <img
+                src={dashboardImg}
+                alt="Sistema Super Fast em um tablet e um monitor com o dashboard"
+                loading="lazy"
+                width={1600}
+                height={790}
+                className="w-full rounded-lg object-cover"
+              />
+            </Reveal>
+            <ul className="divide-y divide-hairline border-y border-hairline">
+              {PROBLEMS.map((p, i) => (
+                <li key={p}>
+                  <Reveal
+                    delay={i * 100}
+                    className="grid grid-cols-[3rem_1fr_auto] items-center gap-4 py-5"
+                  >
+                    <span className="font-display text-primary text-lg">0{i + 1}</span>
+                    <span className="text-lg md:text-xl font-semibold text-ink">{p}</span>
+                    <X className="h-5 w-5 text-primary shrink-0" strokeWidth={2.5} />
+                  </Reveal>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* INTRO — bloco de texto principal (movido para a antepenúltima sessão) */}
+      <section id="proxima-secao" className="bg-ink text-white py-24 md:py-32">
+        <div className="container-x">
+          <div className="max-w-3xl">
+            <div className="mb-6 flex items-center gap-3 text-white/70">
+              <div className="h-px w-10 bg-primary" />
+              <span className="eyebrow">ERP para oficinas mecânicas</span>
+            </div>
+            <h2 className="text-white text-6xl md:text-8xl lg:text-[7rem] leading-[0.92]">
+              A OFICINA
+              <br />
+              NÃO PARA.
+              <br />
+              <span className="text-primary">SUA GESTÃO</span>
+              <br />
+              <span className="text-primary">TAMBÉM NÃO.</span>
+            </h2>
+            <p className="mt-8 max-w-xl text-base md:text-lg text-white/80 leading-relaxed">
+              Controle ordens de serviço, estoque, financeiro, atendimento e
+              indicadores em um único sistema desenvolvido para a rotina real
+              das oficinas.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <CtaButton variant="primary">Solicitar Demonstração</CtaButton>
+              <a
+                href="#solucao"
+                className="text-sm font-semibold uppercase tracking-[0.14em] text-white/80 hover:text-white border-b border-white/30 pb-1"
+              >
+                Ver funcionalidades
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* MAPA INTERATIVO DE SOLUÇÕES */}
       <SolutionsPanel />
