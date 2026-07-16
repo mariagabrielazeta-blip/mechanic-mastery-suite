@@ -122,6 +122,73 @@
   transform: translateY(0);
 }
 
+/* Painel acelerador de soluções (classes isoladas com prefixo sfp-) */
+.sfp-needle {
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sfp-arc {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sfp-bar {
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sfp-card {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+@keyframes sfp-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.sfp-fade {
+  animation: sfp-fade 0.35s ease-out;
+}
+.sfp-throttle {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  border-radius: 9999px;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+.sfp-throttle::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 26px;
+  width: 26px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 3px solid #d11212;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  cursor: grab;
+}
+.sfp-throttle::-webkit-slider-thumb:active {
+  cursor: grabbing;
+}
+.sfp-throttle::-moz-range-thumb {
+  height: 26px;
+  width: 26px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 3px solid #d11212;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+.sfp-throttle::-moz-range-track {
+  background: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sfp-needle, .sfp-arc, .sfp-bar, .sfp-card {
+    transition: none;
+  }
+  .sfp-fade {
+    animation: none;
+  }
+}
+
 /* Logo pulsando no preloader */
 @keyframes logo-pulse {
   0%, 100% {

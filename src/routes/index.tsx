@@ -9,6 +9,7 @@ const mechanicImg = mechanicAsset.url;
 import ctaMechanicAsset from "@/assets/cta-mechanic.png.asset.json";
 const ctaMechanicImg = ctaMechanicAsset.url;
 import dashboardImg from "@/assets/dashboard.jpg";
+import SolutionsPanel from "@/components/SolutionsPanel";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -431,6 +432,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* MAPA INTERATIVO DE SOLUÇÕES */}
+      <SolutionsPanel />
 
       {/* FINAL CTA */}
       <section id="contato" className="relative overflow-hidden bg-[#f5f5f7] text-ink">
