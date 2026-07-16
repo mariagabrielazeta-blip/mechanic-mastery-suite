@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, ClipboardList, Package, Wallet, Users, BarChart3, X, Menu, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
+import { ArrowRight, Check, ClipboardList, Layers, Package, Wallet, X, Menu, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import logoAsset from "@/assets/logo.png.asset.json";
@@ -8,7 +8,6 @@ import mechanicAsset from "@/assets/mechanic-engine.png.asset.json";
 const mechanicImg = mechanicAsset.url;
 import ctaMechanicAsset from "@/assets/cta-mechanic.png.asset.json";
 const ctaMechanicImg = ctaMechanicAsset.url;
-import dashboardImg from "@/assets/dashboard.jpg";
 import SolutionsPanel from "@/components/SolutionsPanel";
 
 export const Route = createFileRoute("/")({
@@ -23,35 +22,59 @@ export const Route = createFileRoute("/")({
 });
 
 const NAV = [
-  { label: "Soluções", href: "#solucao" },
-  { label: "Funcionalidades", href: "#funcionalidades" },
-  { label: "Planos", href: "#planos" },
+  { label: "Soluções", href: "#solucoes" },
+  { label: "Funcionalidades", href: "#como-funciona" },
+  { label: "Implantação", href: "#implantacao" },
   { label: "Contato", href: "#contato" },
 ];
 
-const BENEFITS = [
-  "Ordens de Serviço",
-  "Estoque Inteligente",
-  "Financeiro Completo",
-  "Atendimento Profissional",
-  "Relatórios e Indicadores",
+const DORES = [
+  {
+    icon: ClipboardList,
+    title: "Serviços sem acompanhamento",
+    body: "Dificuldade para saber o que está em execução, quem é o responsável e quando o veículo será entregue.",
+  },
+  {
+    icon: Package,
+    title: "Estoque desorganizado",
+    body: "Peças paradas, compras emergenciais e falta de itens importantes para concluir os serviços.",
+  },
+  {
+    icon: Wallet,
+    title: "Financeiro sem previsibilidade",
+    body: "Entradas, despesas e compromissos sem uma visão clara do fluxo de caixa.",
+  },
+  {
+    icon: Layers,
+    title: "Informações espalhadas",
+    body: "Dados divididos entre papéis, planilhas, mensagens e a memória da equipe.",
+  },
 ];
 
-const PROBLEMS = [
-  "Ordens de serviço perdidas",
-  "Falta de controle financeiro",
-  "Estoque desorganizado",
-  "Retrabalho e desperdício de horas",
-  "Clientes sem histórico completo",
-  "Falta de indicadores de gestão",
+const DESTAQUES = [
+  "Mais controle sobre a operação",
+  "Processos mais organizados",
+  "Informações centralizadas",
+  "Mais agilidade no dia a dia",
+  "Decisões baseadas em dados",
 ];
 
-const FEATURES = [
-  { icon: ClipboardList, title: "Ordens de Serviço", body: "Controle cada etapa do atendimento — da entrada do veículo à entrega ao cliente." },
-  { icon: Package, title: "Estoque Inteligente", body: "Acompanhe entradas, saídas e reposição de peças em tempo real, sem planilhas." },
-  { icon: Wallet, title: "Financeiro Completo", body: "Fluxo de caixa, contas a pagar e a receber, e resultados reais da operação." },
-  { icon: Users, title: "Atendimento Profissional", body: "Histórico completo do cliente e do veículo em uma única tela consultável." },
-  { icon: BarChart3, title: "Relatórios e Indicadores", body: "Decisões baseadas em dados: produtividade, faturamento e margem por serviço." },
+const FLUXO = [
+  { t: "Cliente e veículo", d: "Cadastro do cliente, do veículo e acesso ao histórico." },
+  { t: "Atendimento e orçamento", d: "Checklist, identificação das necessidades e elaboração do orçamento." },
+  { t: "Aprovação", d: "Registro da aprovação e preparação do serviço." },
+  { t: "Ordem de serviço", d: "Definição de etapas, responsáveis, peças e prazos." },
+  { t: "Execução", d: "Acompanhamento dos serviços e do tempo de execução." },
+  { t: "Faturamento", d: "Emissão dos documentos e atualização do financeiro." },
+  { t: "Gestão", d: "Relatórios e indicadores para acompanhar a operação e decidir." },
+];
+
+const IMPLANTACAO = [
+  { t: "Análise", d: "Entendimento da rotina, das particularidades e das necessidades da oficina." },
+  { t: "Implantação", d: "Configuração do sistema de acordo com a estrutura da operação." },
+  { t: "Treinamento", d: "Preparação dos usuários para utilizar as funcionalidades no dia a dia." },
+  { t: "Suporte", d: "Apoio à equipe durante a utilização do sistema." },
+  { t: "Atualização", d: "Evolução contínua da plataforma conforme tecnologias e necessidades do mercado." },
 ];
 
 function Reveal({
@@ -252,195 +275,168 @@ function Home() {
         </a>
       </section>
 
-      {/* MAPA INTERATIVO DE SOLUÇÕES (2ª sessão) */}
-      <SolutionsPanel />
+      {/* Âncora usada pela seta do hero (o hero permanece intacto) */}
+      <span id="proxima-secao" aria-hidden="true" />
 
-
-
-      {/* BENEFITS BAR — carrossel infinito */}
-      <section className="bg-primary text-white overflow-hidden border-y border-white/15">
-        <div className="marquee-track py-5">
-          {[...BENEFITS, ...BENEFITS].map((b, i) => (
-            <div key={i} className="flex shrink-0 items-center gap-3 px-8 md:px-12">
-              <span className="font-display text-xl text-white/40">
-                0{(i % BENEFITS.length) + 1}
-              </span>
-              <span className="whitespace-nowrap text-sm md:text-[15px] font-semibold uppercase tracking-wide">
-                {b}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* PROBLEMS */}
-      <section id="problemas" className="py-24 md:py-32">
-        <div className="container-x">
-          <div className="max-w-3xl mb-16">
-            <div className="mb-5 flex items-center gap-3 text-ink-soft">
+      {/* SEÇÃO 1 — DORES DA OFICINA */}
+      <section id="problemas" className="bg-white py-14 md:py-24">
+        <div className="container-x mx-auto max-w-[1200px]">
+          <div className="max-w-3xl">
+            <div className="mb-5 flex items-center gap-3">
               <div className="h-px w-10 bg-primary" />
               <span className="eyebrow text-primary">O problema</span>
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl">
-              Problemas que
-              <br />
-              custam tempo e dinheiro
-              <br />
-              <span className="text-primary">todos os dias.</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl">
+              O crescimento da sua oficina não pode depender do improviso.
             </h2>
-            <p className="mt-8 max-w-md text-ink-soft leading-relaxed">
-              Toda oficina cresce até o ponto em que o improviso começa a
-              atrapalhar. É aí que os números param de fechar e os clientes
-              começam a perceber.
+            <p className="mt-6 max-w-2xl text-ink-soft leading-relaxed">
+              Quando as informações ficam espalhadas, acompanhar a operação se
+              torna mais difícil. Os atrasos aumentam, o estoque perde o
+              controle e o financeiro deixa de mostrar a realidade do negócio.
             </p>
           </div>
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {DORES.map((d, i) => (
+              <Reveal key={d.title} delay={i * 90} className="h-full">
+                <div className="flex h-full flex-col gap-4 border border-hairline p-6">
+                  <d.icon className="h-7 w-7 text-primary" strokeWidth={1.6} />
+                  <h3 className="font-display text-xl leading-tight">{d.title}</h3>
+                  <p className="text-sm leading-relaxed text-ink-soft">{d.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-10 max-w-2xl text-lg font-semibold text-ink">
+            Quando cada área trabalha separada, a oficina perde tempo, dinheiro
+            e capacidade de crescer.
+          </p>
+        </div>
+      </section>
 
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-            <Reveal>
-              <img
-                src={dashboardImg}
-                alt="Sistema Super Fast em um tablet e um monitor com o dashboard"
-                loading="lazy"
-                width={1600}
-                height={790}
-                className="w-full rounded-lg object-cover"
-              />
-            </Reveal>
-            <ul className="divide-y divide-hairline border-y border-hairline">
-              {PROBLEMS.map((p, i) => (
-                <li key={p}>
-                  <Reveal
-                    delay={i * 100}
-                    className="grid grid-cols-[3rem_1fr_auto] items-center gap-4 py-5"
-                  >
-                    <span className="font-display text-primary text-lg">0{i + 1}</span>
-                    <span className="text-lg md:text-xl font-semibold text-ink">{p}</span>
-                    <X className="h-5 w-5 text-primary shrink-0" strokeWidth={2.5} />
+      {/* SEÇÃO 2 — APRESENTAÇÃO CURTA DO SUPER FAST */}
+      <section id="superfast" className="bg-[#f5f5f7] py-14 md:py-24">
+        <div className="container-x mx-auto max-w-[1200px]">
+          <div className="max-w-3xl">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="h-px w-10 bg-primary" />
+              <span className="eyebrow text-primary">A solução</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl">
+              Toda a sua oficina conectada
+              <br />
+              em uma <span className="text-primary">única gestão.</span>
+            </h2>
+            <p className="mt-6 max-w-2xl text-ink-soft leading-relaxed">
+              O Super Fast integra atendimento, operação, estoque, financeiro,
+              fiscal e indicadores para que você acompanhe sua oficina com mais
+              clareza e tome decisões com segurança.
+            </p>
+          </div>
+          <ul className="mt-10 flex flex-wrap gap-3">
+            {DESTAQUES.map((d, i) => (
+              <li key={d}>
+                <Reveal delay={i * 70}>
+                  <span className="flex items-center gap-2.5 border border-hairline bg-white px-4 py-2.5 text-sm font-medium text-ink">
+                    <Check className="h-4 w-4 shrink-0 text-primary" strokeWidth={2.5} />
+                    {d}
+                  </span>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 font-display text-2xl md:text-3xl uppercase">
+            Tudo integrado. Tudo sob controle.{" "}
+            <span className="text-primary">Tudo para o resultado da sua oficina.</span>
+          </p>
+        </div>
+      </section>
+
+      {/* SEÇÃO 3 — ACELERADOR INTERATIVO (componente protegido; wrapper apenas para âncora e separação) */}
+      <div id="solucoes" className="border-t border-hairline">
+        <SolutionsPanel />
+      </div>
+
+      {/* SEÇÃO 4 — FLUXO DO DIA A DIA DA OFICINA */}
+      <section id="como-funciona" className="bg-ink text-white py-14 md:py-24">
+        <div className="container-x mx-auto max-w-[1200px]">
+          <div className="max-w-3xl">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="h-px w-10 bg-primary" />
+              <span className="eyebrow text-primary">Como funciona</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-white">
+              Do veículo entrando à gestão
+              <br />
+              <span className="text-primary">acompanhando o resultado.</span>
+            </h2>
+            <p className="mt-6 max-w-2xl text-white/70 leading-relaxed">
+              Cada etapa gera informação para a próxima. Assim, toda a oficina
+              trabalha de forma integrada.
+            </p>
+          </div>
+          <ol className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {FLUXO.map((f, i) => (
+              <li key={f.t}>
+                <Reveal delay={i * 70} className="h-full">
+                  <div className="h-full border-t-2 border-white/15 pt-5">
+                    <span className="font-display text-lg text-primary">
+                      0{i + 1}
+                    </span>
+                    <h3 className="mt-2 font-display text-xl leading-tight text-white">
+                      {f.t}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/60">{f.d}</p>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* SEÇÃO 5 — IMPLANTAÇÃO, TREINAMENTO E SUPORTE */}
+      <section id="implantacao" className="bg-white py-14 md:py-24">
+        <div className="container-x mx-auto max-w-[1200px]">
+          <div className="max-w-3xl">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="h-px w-10 bg-primary" />
+              <span className="eyebrow text-primary">Muito além do software</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl">
+              Um sistema completo precisa funcionar na{" "}
+              <span className="text-primary">realidade da sua oficina.</span>
+            </h2>
+            <p className="mt-6 max-w-2xl text-ink-soft leading-relaxed">
+              Você não recebe apenas um sistema. Recebe acompanhamento para
+              transformar a gestão da sua oficina.
+            </p>
+          </div>
+          <div className="relative mt-12">
+            {/* linha discreta conectando as etapas no desktop */}
+            <div
+              aria-hidden="true"
+              className="absolute left-0 right-0 top-10 hidden h-px bg-hairline lg:block"
+            />
+            <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {IMPLANTACAO.map((s, i) => (
+                <li key={s.t} className="h-full">
+                  <Reveal delay={i * 80} className="h-full">
+                    <div className="relative h-full border border-hairline bg-white p-6">
+                      <span className="grid h-9 w-9 place-items-center rounded-full bg-primary/10 font-display text-primary">
+                        {i + 1}
+                      </span>
+                      <h3 className="mt-4 font-display text-lg leading-tight">{s.t}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.d}</p>
+                    </div>
                   </Reveal>
                 </li>
               ))}
-            </ul>
+            </ol>
           </div>
         </div>
       </section>
 
-      {/* INTRO — bloco de texto principal (movido para a antepenúltima sessão) */}
-      <section id="proxima-secao" className="bg-ink text-white py-24 md:py-32">
-        <div className="container-x">
-          <div className="max-w-3xl">
-            <div className="mb-6 flex items-center gap-3 text-white/70">
-              <div className="h-px w-10 bg-primary" />
-              <span className="eyebrow">ERP para oficinas mecânicas</span>
-            </div>
-            <h2 className="text-white text-6xl md:text-8xl lg:text-[7rem] leading-[0.92]">
-              A OFICINA
-              <br />
-              NÃO PARA.
-              <br />
-              <span className="text-primary">SUA GESTÃO</span>
-              <br />
-              <span className="text-primary">TAMBÉM NÃO.</span>
-            </h2>
-            <p className="mt-8 max-w-xl text-base md:text-lg text-white/80 leading-relaxed">
-              Controle ordens de serviço, estoque, financeiro, atendimento e
-              indicadores em um único sistema desenvolvido para a rotina real
-              das oficinas.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <CtaButton variant="primary">Solicitar Demonstração</CtaButton>
-              <a
-                href="#solucao"
-                className="text-sm font-semibold uppercase tracking-[0.14em] text-white/80 hover:text-white border-b border-white/30 pb-1"
-              >
-                Ver funcionalidades
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* SOLUTION */}
-      <section id="solucao" className="bg-ink text-white py-24 md:py-32">
-        <div className="container-x">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16 items-end mb-16">
-            <div className="lg:col-span-7">
-              <div className="mb-5 flex items-center gap-3 text-white/60">
-                <div className="h-px w-10 bg-primary" />
-                <span className="eyebrow text-primary">A solução</span>
-              </div>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl text-white">
-                Um sistema completo.
-                <br />
-                <span className="text-primary">Simples</span> e{" "}
-                <span className="text-primary">poderoso</span>.
-              </h2>
-            </div>
-            <div className="lg:col-span-5">
-              <p className="text-white/70 leading-relaxed text-lg">
-                A Super Fast conecta todos os setores da oficina para que você
-                tenha mais controle, produtividade e previsibilidade na
-                operação — do orçamento à entrega, do estoque ao caixa.
-              </p>
-            </div>
-          </div>
-
-          <div id="funcionalidades" className="grid gap-px bg-white/10 border border-white/10 md:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map((f) => (
-              <div
-                key={f.title}
-                className="group bg-ink p-8 md:p-10 flex flex-col gap-6 hover:bg-white/[0.03] transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="grid h-14 w-14 place-items-center bg-primary/10 text-primary">
-                    <f.icon className="h-7 w-7" strokeWidth={1.75} />
-                  </div>
-                  <ArrowRight className="h-5 w-5 text-white/30 group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                </div>
-                <div>
-                  <h3 className="text-2xl md:text-[1.75rem] text-white leading-tight">
-                    {f.title}
-                  </h3>
-                  <p className="mt-3 text-white/60 leading-relaxed">{f.body}</p>
-                </div>
-              </div>
-            ))}
-            <div className="bg-primary p-8 md:p-10 flex flex-col justify-between gap-6">
-              <div>
-                <span className="eyebrow text-white/80">Tudo em um só lugar</span>
-                <h3 className="mt-3 text-2xl md:text-[1.75rem] text-white leading-tight">
-                  Uma plataforma. Toda a oficina sob controle.
-                </h3>
-              </div>
-              <a
-                href="#contato"
-                className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.14em] text-white"
-              >
-                Ver demonstração <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Stats strip */}
-          <div className="mt-20 grid gap-10 md:grid-cols-3 border-t border-white/10 pt-12">
-            {[
-              { k: "+2.400", v: "Oficinas ativas em todo o país" },
-              { k: "38%", v: "Aumento médio de produtividade no 1º ano" },
-              { k: "24/7", v: "Suporte especializado em oficinas mecânicas" },
-            ].map((s) => (
-              <div key={s.k}>
-                <div className="font-display text-6xl md:text-7xl text-white leading-none">
-                  {s.k}
-                </div>
-                <div className="mt-4 text-white/60 max-w-xs">{s.v}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-      {/* FINAL CTA */}
+      {/* SEÇÃO 6 — CTA FINAL */}
       <section id="contato" className="relative overflow-hidden bg-[#f5f5f7] text-ink">
         <img
           src={ctaMechanicImg}
@@ -456,21 +452,29 @@ function Home() {
             <div className="mb-6">
               <span className="eyebrow text-primary">Fale com a Super Fast</span>
             </div>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl text-ink">
-              Sua oficina merece
+            <h2 className="text-4xl md:text-6xl lg:text-7xl text-ink">
+              Sua oficina já trabalha em alta velocidade.
               <br />
-              mais <span className="text-primary">controle</span>
-              <br />
-              e mais <span className="text-primary">resultado.</span>
+              Agora a gestão precisa{" "}
+              <span className="text-primary">acompanhar.</span>
             </h2>
             <p className="mt-8 max-w-xl text-lg text-ink/75 leading-relaxed">
-              Solicite uma demonstração e descubra como a Super Fast pode
-              simplificar a gestão da sua operação, sem burocracia e sem
-              complicação.
+              O Super Fast conecta as informações, organiza os processos e
+              entrega a visão que você precisa para conduzir sua oficina com
+              mais controle.
             </p>
-            <div className="mt-10">
-              <CtaButton variant="primary">Solicitar Demonstração</CtaButton>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <CtaButton variant="primary" href="https://wa.me/5551984277489">
+                Quero conhecer o Super Fast
+              </CtaButton>
+              <CtaButton variant="outline" href="mailto:contato@sfast.com.br">
+                Agendar uma demonstração
+              </CtaButton>
             </div>
+            <p className="mt-6 text-sm text-ink/60">
+              Descubra como o Super Fast pode ser aplicado à realidade da sua
+              oficina.
+            </p>
           </div>
         </div>
       </section>
