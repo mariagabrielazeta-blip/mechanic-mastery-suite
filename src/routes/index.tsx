@@ -360,8 +360,85 @@ function Home() {
       </section>
 
 
-      {/* MAPA INTERATIVO DE SOLUÇÕES */}
-      <SolutionsPanel />
+      {/* SOLUTION */}
+      <section id="solucao" className="bg-ink text-white py-24 md:py-32">
+        <div className="container-x">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16 items-end mb-16">
+            <div className="lg:col-span-7">
+              <div className="mb-5 flex items-center gap-3 text-white/60">
+                <div className="h-px w-10 bg-primary" />
+                <span className="eyebrow text-primary">A solução</span>
+              </div>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl text-white">
+                Um sistema completo.
+                <br />
+                <span className="text-primary">Simples</span> e{" "}
+                <span className="text-primary">poderoso</span>.
+              </h2>
+            </div>
+            <div className="lg:col-span-5">
+              <p className="text-white/70 leading-relaxed text-lg">
+                A Super Fast conecta todos os setores da oficina para que você
+                tenha mais controle, produtividade e previsibilidade na
+                operação — do orçamento à entrega, do estoque ao caixa.
+              </p>
+            </div>
+          </div>
+
+          <div id="funcionalidades" className="grid gap-px bg-white/10 border border-white/10 md:grid-cols-2 lg:grid-cols-3">
+            {FEATURES.map((f) => (
+              <div
+                key={f.title}
+                className="group bg-ink p-8 md:p-10 flex flex-col gap-6 hover:bg-white/[0.03] transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="grid h-14 w-14 place-items-center bg-primary/10 text-primary">
+                    <f.icon className="h-7 w-7" strokeWidth={1.75} />
+                  </div>
+                  <ArrowRight className="h-5 w-5 text-white/30 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                </div>
+                <div>
+                  <h3 className="text-2xl md:text-[1.75rem] text-white leading-tight">
+                    {f.title}
+                  </h3>
+                  <p className="mt-3 text-white/60 leading-relaxed">{f.body}</p>
+                </div>
+              </div>
+            ))}
+            <div className="bg-primary p-8 md:p-10 flex flex-col justify-between gap-6">
+              <div>
+                <span className="eyebrow text-white/80">Tudo em um só lugar</span>
+                <h3 className="mt-3 text-2xl md:text-[1.75rem] text-white leading-tight">
+                  Uma plataforma. Toda a oficina sob controle.
+                </h3>
+              </div>
+              <a
+                href="#contato"
+                className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.14em] text-white"
+              >
+                Ver demonstração <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Stats strip */}
+          <div className="mt-20 grid gap-10 md:grid-cols-3 border-t border-white/10 pt-12">
+            {[
+              { k: "+2.400", v: "Oficinas ativas em todo o país" },
+              { k: "38%", v: "Aumento médio de produtividade no 1º ano" },
+              { k: "24/7", v: "Suporte especializado em oficinas mecânicas" },
+            ].map((s) => (
+              <div key={s.k}>
+                <div className="font-display text-6xl md:text-7xl text-white leading-none">
+                  {s.k}
+                </div>
+                <div className="mt-4 text-white/60 max-w-xs">{s.v}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* FINAL CTA */}
       <section id="contato" className="relative overflow-hidden bg-[#f5f5f7] text-ink">
