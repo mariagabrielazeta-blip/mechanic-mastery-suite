@@ -446,9 +446,9 @@ function Home() {
           height={960}
           className="absolute inset-0 h-full w-full object-cover opacity-100 contrast-125 saturate-[1.15]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/35 via-white/15 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/45 to-transparent" />
         <div className="relative container-x py-28 md:py-40">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl rounded-2xl bg-white/70 p-8 md:p-12 shadow-2xl backdrop-blur-sm">
             <div className="mb-6">
               <span className="eyebrow text-primary">Fale com a Super Fast</span>
             </div>
@@ -458,7 +458,7 @@ function Home() {
               Agora a gestão precisa{" "}
               <span className="text-primary">acompanhar.</span>
             </h2>
-            <p className="mt-8 max-w-xl text-lg text-ink/75 leading-relaxed">
+            <p className="mt-8 max-w-xl text-lg text-ink/80 leading-relaxed">
               O Super Fast conecta as informações, organiza os processos e
               entrega a visão que você precisa para conduzir sua oficina com
               mais controle.
@@ -467,11 +467,8 @@ function Home() {
               <CtaButton variant="primary" href="https://wa.me/5551984277489">
                 Quero conhecer o Super Fast
               </CtaButton>
-              <CtaButton variant="outline" href="mailto:contato@sfast.com.br">
-                Agendar uma demonstração
-              </CtaButton>
             </div>
-            <p className="mt-6 text-sm text-ink/60">
+            <p className="mt-6 text-sm text-ink/70">
               Descubra como o Super Fast pode ser aplicado à realidade da sua
               oficina.
             </p>
