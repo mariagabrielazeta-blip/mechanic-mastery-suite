@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+const SITE_URL = "https://mechanic-mastery-suite.vercel.app/";
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -77,20 +79,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Super Fast — ERP para oficinas mecânicas" },
+      { title: "Super Fast | ERP para oficinas mecânicas" },
       {
         name: "description",
         content:
           "O ERP completo para oficinas que querem controle total, mais produtividade e resultados reais. Ordens de serviço, estoque, financeiro e indicadores em um só sistema.",
       },
-      { property: "og:title", content: "Super Fast — ERP para oficinas mecânicas" },
+      { property: "og:title", content: "Super Fast | ERP para oficinas mecânicas" },
       {
         property: "og:description",
         content:
-          "Controle ordens de serviço, estoque, financeiro, atendimento e indicadores em um único sistema desenvolvido para a rotina das oficinas.",
+          "O ERP completo para oficinas que querem controle total, mais produtividade e resultados reais. Ordens de serviço, estoque, financeiro e indicadores em um só sistema.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Super Fast | ERP para oficinas mecânicas" },
+      {
+        name: "twitter:description",
+        content:
+          "O ERP completo para oficinas que querem controle total, mais produtividade e resultados reais. Ordens de serviço, estoque, financeiro e indicadores em um só sistema.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3d93b98f-d41f-454e-9a22-eb514b563b86/id-preview-74f58b10--a30fe99c-93a4-403e-a5c1-f6094c89fa9a.lovable.app-1784126524866.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3d93b98f-d41f-454e-9a22-eb514b563b86/id-preview-74f58b10--a30fe99c-93a4-403e-a5c1-f6094c89fa9a.lovable.app-1784126524866.png",
+      },
+      { property: "og:url", content: SITE_URL },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -111,7 +130,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
