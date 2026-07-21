@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import { CtaButton } from "@/components/CtaButton";
 import { implementationSteps } from "@/data/implementation";
 
 type ScheduleHandler = () => void;
@@ -488,6 +489,11 @@ export function ImplementationVisualSection() {
               <p className="mt-3 max-w-[13rem] text-sm leading-relaxed text-ink-soft">{step.text}</p>
             </article>
           ))}
+        </div>
+        <div className="mt-14 flex justify-center">
+          <CtaButton variant="primary" href="#contato">
+            Quero começar minha implantação
+          </CtaButton>
         </div>
       </div>
     </section>

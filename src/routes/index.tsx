@@ -2,8 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  BarChart3,
-  CalendarClock,
   CheckCircle2,
   Menu,
   X,
@@ -15,9 +13,6 @@ import {
   LineChart,
   Layers3,
   Workflow,
-  ClipboardCheck,
-  PackageCheck,
-  Users,
   Wrench,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -26,7 +21,8 @@ import logoImg from "@/assets/sflogo.png";
 import customerImg from "@/assets/customer.jpg";
 import receptionImg from "@/assets/reception.jpg";
 import teamImg from "@/assets/team.jpg";
-import SolutionsPanel from "@/components/SolutionsPanel";
+import { CtaButton } from "@/components/CtaButton";
+import ModulosCarousel from "@/components/ModulosCarousel";
 import { DemoForm, ImplementationVisualSection } from "@/components/SuperFastRedesignSections";
 
 const SITE_URL = "https://mechanic-mastery-suite.vercel.app/";
@@ -44,7 +40,8 @@ export const Route = createFileRoute("/")({
 
 const NAV = [
   { label: "Capacidade", href: "#capacidade" },
-  { label: "Soluções", href: "#solucoes" },
+  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "Implantação", href: "#implantacao" },
   { label: "Demonstração", href: "#contato" },
 ];
 
@@ -129,38 +126,6 @@ function Logo({ className = "h-9" }: { className?: string }) {
   );
 }
 
-function CtaButton({
-  children,
-  variant = "primary",
-  className = "",
-  href = "#contato",
-  target,
-}: {
-  children: React.ReactNode;
-  variant?: "primary" | "ghost" | "outline";
-  className?: string;
-  href?: string;
-  target?: React.HTMLAttributeAnchorTarget;
-}) {
-  const base =
-    "group inline-flex items-center gap-3 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] transition-all duration-200";
-  const styles = {
-    primary: "bg-primary text-primary-foreground hover:bg-ink",
-    outline: "border border-ink text-ink hover:bg-ink hover:text-white",
-    ghost: "border border-white/30 text-white hover:bg-white hover:text-ink",
-  }[variant];
-  return (
-    <a
-      href={href}
-      target={target}
-      rel={target === "_blank" ? "noreferrer" : undefined}
-      className={`${base} ${styles} ${className}`}
-    >
-      {children}
-      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-    </a>
-  );
-}
 
 function FloatingWhatsAppButton() {
   return (
@@ -240,15 +205,6 @@ const TIMELINE = [
   },
 ];
 
-const CAPACITY_MODULES = [
-  { icon: ClipboardCheck, name: "Ordens de serviço", text: "Check-in, fotos, execução e entrega no mesmo fluxo." },
-  { icon: CalendarClock, name: "Agenda", text: "Serviços e prioridades visíveis para a equipa." },
-  { icon: PackageCheck, name: "Estoque", text: "Peças, compras e mínimos sob controlo." },
-  { icon: LineChart, name: "Financeiro", text: "Caixa, contas e previsões ligados à operação." },
-  { icon: Users, name: "Clientes", text: "Histórico, veículos e relacionamento centralizados." },
-  { icon: BarChart3, name: "Indicadores", text: "Dados claros para decidir sem achismo." },
-];
-
 const TESTIMONIALS = [
   {
     image: customerImg,
@@ -279,116 +235,10 @@ function SectionKicker({ children }: { children: React.ReactNode }) {
   );
 }
 
-function CapacitySection() {
-  const [active, setActive] = useState(0);
-  const current = CAPACITY_MODULES[active];
-  return (
-    <section id="capacidade" className="bg-[#F8F8F6] py-24 text-ink md:py-32">
-      <div className="container-x mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}>
-          <SectionKicker>GESTÃO INTELIGENTE</SectionKicker>
-          <h2 className="max-w-xl text-4xl md:text-6xl">Tudo o que sua oficina precisa. Em um único sistema.</h2>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft">
-            Do primeiro atendimento à entrega do veículo, o Super Fast conecta pessoas, processos e informações para que sua operação funcione de forma organizada e previsível.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/45 hover:bg-primary/12"
-            >
-              Agendar demonstração
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-            </a>
-            <a
-              href="#solucoes"
-              className="sf-link text-sm font-semibold uppercase tracking-[0.14em]"
-            >
-              Ver soluções
-            </a>
-          </div>
-          <div className="mt-10 space-y-3">
-            {CAPACITY_MODULES.map((item, index) => (
-              <button
-                key={item.name}
-                type="button"
-                onMouseEnter={() => setActive(index)}
-                onFocus={() => setActive(index)}
-                onClick={() => setActive(index)}
-                className={`flex w-full items-center gap-4 rounded-2xl border p-4 text-left transition-all ${
-                  active === index
-                    ? "border-primary bg-white shadow-[0_20px_55px_-42px_rgba(17,17,17,0.7)]"
-                    : "border-black/5 bg-transparent hover:border-primary/30 hover:bg-white/60"
-                }`}
-              >
-                <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-full ${active === index ? "bg-primary text-white" : "bg-black/5 text-primary"}`}>
-                  <item.icon className="h-5 w-5" strokeWidth={1.8} />
-                </span>
-                <span>
-                  <span className="block text-lg font-semibold text-ink">{item.name}</span>
-                  <span className="mt-1 block text-sm text-ink-soft">{item.text}</span>
-                </span>
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} className="relative">
-          <div className="absolute -inset-6 rounded-[2rem] bg-primary/10 blur-3xl" />
-          <div className="relative overflow-hidden rounded-[32px] border border-black/10 bg-[#111318] p-5 shadow-[0_30px_90px_-50px_rgba(17,17,17,0.85)] md:p-7">
-            <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
-              <div className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-full bg-primary" />
-                <span className="h-3 w-3 rounded-full bg-white/20" />
-                <span className="h-3 w-3 rounded-full bg-white/20" />
-              </div>
-              <span className="eyebrow text-white/45">Super Fast ERP</span>
-            </div>
-            <div className="grid gap-5 lg:grid-cols-[1fr_0.8fr]">
-              <div className="rounded-3xl bg-white/[0.04] p-5">
-                <div className="flex items-center gap-3 text-primary">
-                  <current.icon className="h-6 w-6" />
-                  <span className="text-sm font-semibold uppercase tracking-[0.18em]">{current.name}</span>
-                </div>
-                <h3 className="mt-8 text-4xl text-white">Rotina clara. Decisão rápida.</h3>
-                <p className="mt-4 text-sm leading-relaxed text-white/60">{current.text}</p>
-                <div className="mt-8 grid gap-3">
-                  {["Entrada organizada", "Responsável definido", "Resultado visível"].map((item) => (
-                    <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/25 p-3 text-sm text-white/75">
-                      <CheckCircle2 className="h-4 w-4 text-primary" /> {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="grid gap-4">
-                <div className="h-44 w-full rounded-3xl border border-white/14 bg-white/[0.08] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_22px_55px_-42px_rgba(0,0,0,0.9)] backdrop-blur-xl">
-                  <div className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                    <span className="eyebrow text-white/45">Operação conectada</span>
-                    <div>
-                      <div className="font-display text-4xl text-white">360°</div>
-                      <p className="mt-1 text-xs leading-relaxed text-white/55">
-                        Atendimento, peças, equipa e financeiro no mesmo fluxo.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-3xl border border-primary/25 bg-primary/10 p-5">
-                  <div className="font-display text-5xl text-white">+ controle</div>
-                  <p className="mt-2 text-sm text-white/60">Do cliente ao financeiro, tudo ligado.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
 
 function ProofSection() {
   return (
-    <section className="bg-[#F3F3F1] py-24 text-ink md:py-32">
+    <section id="depoimentos" className="bg-[#F3F3F1] py-24 text-ink md:py-32">
       <div className="container-x mx-auto max-w-[1240px] overflow-hidden">
         <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
@@ -431,6 +281,11 @@ function ProofSection() {
           <span>Arraste para ver mais</span>
           <span>Passe o mouse para ler</span>
         </div>
+        <div className="mt-10 flex justify-center">
+          <CtaButton variant="primary" href="#contato">
+            Quero os mesmos resultados
+          </CtaButton>
+        </div>
       </div>
     </section>
   );
@@ -451,6 +306,11 @@ function ConversionDemoSection() {
                 <CheckCircle2 className="h-5 w-5 text-primary" /> {item}
               </div>
             ))}
+          </div>
+          <div className="mt-8 flex justify-center">
+            <CtaButton variant="ghost" href={WHATSAPP_URL} target="_blank">
+              Prefiro falar agora no WhatsApp
+            </CtaButton>
           </div>
         </div>
         <DemoForm />
@@ -562,12 +422,7 @@ function Home() {
       </section>
       <span id="proxima-secao" aria-hidden="true" />
 
-      <CapacitySection />
-
-      {/* MAPA INTERATIVO */}
-      <div id="solucoes" className="border-t border-hairline">
-        <SolutionsPanel />
-      </div>
+      <ModulosCarousel />
 
       <ProofSection />
       <ImplementationVisualSection />
@@ -576,13 +431,18 @@ function Home() {
       {/* Footer */}
       <footer className="border-t border-black/5 bg-[#F8F8F6] text-ink-soft">
         <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
-          <div className="[&_img]:invert [&_span]:!text-ink">
+          <div className="[&_img]:invert-0 [&_span]:!text-ink">
             <Logo />
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <a href="mailto:contato@sfast.com.br" className="hover:text-primary">contato@sfast.com.br</a>
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-primary">WhatsApp</a>
             <span>Porto Alegre/RS</span>
+          </div>
+          <div className="flex w-full justify-center md:w-auto">
+            <CtaButton variant="outline" href={WHATSAPP_URL} target="_blank" className="!px-5 !py-2.5">
+              Comece hoje mesmo
+            </CtaButton>
           </div>
           <div className="text-xs">© {new Date().getFullYear()} Super Fast</div>
         </div>
