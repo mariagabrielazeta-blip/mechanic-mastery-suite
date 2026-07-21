@@ -1,22 +1,22 @@
 export const implementationSteps = [
   {
     title: "Diagnóstico",
-    text: "Entendemos a realidade da oficina.",
+    text: "Mapeamos a rotina e os gargalos da sua oficina mecânica.",
   },
   {
     title: "Configuração",
-    text: "Ajustamos o sistema à rotina.",
+    text: "O ERP é ajustado ao fluxo real da sua operação.",
   },
   {
     title: "Treinamento",
-    text: "A equipa aprende com orientação.",
+    text: "Equipe treinada no ritmo da oficina, com suporte próximo.",
   },
   {
     title: "Implantação",
-    text: "A entrada acontece com suporte.",
+    text: "Entrada em operação acompanhada em cada etapa.",
   },
   {
     title: "Operação",
-    text: "A oficina segue acompanhada.",
+    text: "Sua oficina roda com controle e evolução contínua.",
   },
 ] as const;

@@ -473,7 +473,7 @@ export function ImplementationVisualSection() {
       <div className={container}>
         <SectionIntro
           eyebrow="Implantação"
-          title="Entrar em operação não precisa ser pesado."
+          title="Implante o ERP da sua oficina sem parar a operação."
         />
         <div className="mt-16 grid gap-8 md:grid-cols-5 md:gap-4">
           {implementationSteps.map((step, index) => (
@@ -548,9 +548,9 @@ export function DemoForm({ compact = false, onSuccess }: DemoFormProps) {
       }}
     >
       <div className="mb-8">
-        <span className="eyebrow text-primary">Convite para demonstração</span>
+        <span className="eyebrow text-primary">Solicite sua demonstração gratuita</span>
         <p className="mt-3 text-sm leading-relaxed text-white/60">
-          Poucos dados. Uma conversa objetiva sobre a rotina da sua oficina.
+          Poucos dados. Uma conversa rápida sobre a rotina da sua oficina mecânica.
         </p>
       </div>
       <div className={`grid gap-4 ${compact ? "" : "md:grid-cols-2"}`}>

@@ -38,11 +38,14 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+const LOGIN_URL = "https://erp.sfast.com.br";
+
 const NAV = [
-  { label: "Capacidade", href: "#capacidade" },
+  { label: "Gestão inteligente", href: "#capacidade" },
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Implantação", href: "#implantacao" },
   { label: "Demonstração", href: "#contato" },
+  { label: "Login SF", href: LOGIN_URL, external: true },
 ];
 
 const WHATSAPP_URL =
@@ -243,9 +246,9 @@ function ProofSection() {
         <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
             <SectionKicker>Depoimentos</SectionKicker>
-            <h2 className="max-w-3xl text-4xl md:text-6xl">Quem vive oficina percebe a diferença.</h2>
+            <h2 className="max-w-3xl text-4xl md:text-6xl">Oficinas mecânicas que já sentem a diferença.</h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-ink-soft">Histórias curtas de equipas que precisavam de processo, clareza e atendimento mais profissional.</p>
+          <p className="max-w-sm text-sm leading-relaxed text-ink-soft">Depoimentos reais de oficinas mecânicas que trocaram planilhas e retrabalho por um ERP feito para o dia a dia da oficina.</p>
         </div>
         <div className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:-mx-8 md:gap-6 md:px-8 [&::-webkit-scrollbar]:hidden">
           {TESTIMONIALS.map((item, index) => (
@@ -292,14 +295,14 @@ function ProofSection() {
 }
 
 function ConversionDemoSection() {
-  const benefits = ["Demonstração focada na tua rotina", "Mapeamento dos gargalos da oficina", "Próximos passos claros para implantação"];
+  const benefits = ["Demonstração personalizada para a rotina da sua oficina", "Diagnóstico dos gargalos que travam sua operação", "Plano de implantação claro, sem enrolação"];
   return (
     <section id="contato" className="bg-[#111318] py-24 text-white md:py-32">
       <div className="container-x mx-auto grid max-w-[1200px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
-          <SectionKicker>Agendar demonstração</SectionKicker>
-          <h2 className="text-5xl md:text-7xl">Veja o Super Fast na prática.</h2>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-white/65">Uma conversa objetiva para mostrar como atendimento, OS, estoque e financeiro podem funcionar juntos.</p>
+          <SectionKicker>Demonstração gratuita</SectionKicker>
+          <h2 className="text-5xl md:text-7xl">Veja o ERP para oficina mecânica na prática.</h2>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-white/65">Agende uma demonstração gratuita e veja como o Super Fast conecta atendimento, ordens de serviço, estoque e financeiro em um único sistema de gestão para oficinas mecânicas.</p>
           <div className="mt-10 grid gap-4">
             {benefits.map((item) => (
               <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm font-semibold text-white/80">
@@ -339,6 +342,8 @@ function Home() {
               <a
                 key={n.label}
                 href={n.href}
+                target={n.external ? "_blank" : undefined}
+                rel={n.external ? "noreferrer" : undefined}
                 className="text-sm font-medium text-white/85 hover:text-white transition-colors"
               >
                 {n.label}
@@ -370,6 +375,8 @@ function Home() {
                 <a
                   key={n.label}
                   href={n.href}
+                  target={n.external ? "_blank" : undefined}
+                  rel={n.external ? "noreferrer" : undefined}
                   onClick={() => setOpen(false)}
                   className="text-white/90 text-base"
                 >
@@ -431,7 +438,7 @@ function Home() {
       {/* Footer */}
       <footer className="border-t border-black/5 bg-[#F8F8F6] text-ink-soft">
         <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
-          <div className="[&_img]:invert-0 [&_span]:!text-ink">
+          <div className="[&_img]:brightness-0 [&_span]:!text-ink">
             <Logo />
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
