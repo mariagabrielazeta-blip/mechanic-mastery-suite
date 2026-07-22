@@ -118,13 +118,25 @@ function Preloader() {
   );
 }
 
-function Logo({ className = "h-9" }: { className?: string }) {
+function Logo({
+  className = "h-9",
+  tone = "header",
+}: {
+  className?: string;
+  tone?: "header" | "footer";
+}) {
+  if (tone === "footer") {
+    return (
+      <a href="#top" className="flex items-center gap-2.5 shrink-0">
+        <img src={logoImg} alt="Super Fast" className={`${className} w-auto brightness-0`} />
+        <span className="font-display text-xl tracking-tight leading-none text-ink">SUPERFAST</span>
+      </a>
+    );
+  }
   return (
     <a href="#top" className="flex items-center gap-2.5 shrink-0">
-      <img src={logoImg} alt="Super Fast" className={`${className} w-auto invert`} />
-      <span className="font-display text-xl tracking-tight text-ink leading-none">
-        SUPER<span className="text-primary">FAST</span>
-      </span>
+      <img src={logoImg} alt="Super Fast" className={`${className} w-auto`} />
+      <span className="font-display text-xl tracking-tight leading-none text-white">SUPERFAST</span>
     </a>
   );
 }
@@ -334,9 +346,7 @@ function Home() {
       {/* NAV */}
       <header className="absolute inset-x-0 top-0 z-50">
         <div className="container-x flex h-20 items-center justify-between">
-          <div className="[&_span]:!text-white [&_img]:invert-0">
-            <Logo />
-          </div>
+          <Logo tone="header" />
           <nav className="hidden lg:flex items-center gap-9">
             {NAV.map((n) => (
               <a
@@ -439,7 +449,7 @@ function Home() {
       <footer className="border-t border-black/5 bg-[#F8F8F6] text-ink-soft">
         <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
           <div className="[&_img]:brightness-0 [&_span]:!text-ink">
-            <Logo />
+            <Logo tone="footer" />
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <a href="mailto:contato@sfast.com.br" className="hover:text-primary">contato@sfast.com.br</a>
