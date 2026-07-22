@@ -14,6 +14,7 @@ import {
   Layers3,
   Workflow,
   Wrench,
+  Instagram,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -50,6 +51,7 @@ const NAV = [
 
 const WHATSAPP_URL =
   "https://wa.me/5551984277489?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20sobre%20o%20Super%20Fast.";
+const INSTAGRAM_URL = "https://www.instagram.com/";
 
 /* ---------- HELPERS ---------- */
 
@@ -446,18 +448,27 @@ function Home() {
       <ConversionDemoSection />
 
       {/* Footer */}
-      <footer className="border-t border-black/5 bg-[#F8F8F6] text-ink-soft">
+      <footer className="border-t border-black/5 bg-primary text-white/80">
         <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
-          <div className="[&_img]:brightness-0 [&_span]:!text-ink">
-            <Logo tone="footer" />
+          <div className="[&_img]:brightness-0 [&_img]:invert [&_span]:!text-white">
+            <Logo tone="header" />
           </div>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            <a href="mailto:contato@sfast.com.br" className="hover:text-primary">contato@sfast.com.br</a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-primary">WhatsApp</a>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+            <a href="mailto:contato@sfast.com.br" className="hover:text-white">contato@sfast.com.br</a>
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-white">WhatsApp</a>
             <span>Porto Alegre/RS</span>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
+            >
+              <Instagram className="h-4 w-4" />
+            </a>
           </div>
           <div className="flex w-full justify-center md:w-auto">
-            <CtaButton variant="outline" href={WHATSAPP_URL} target="_blank" className="!px-5 !py-2.5">
+            <CtaButton variant="outline" href={WHATSAPP_URL} target="_blank" className="!px-5 !py-2.5 !border-white !text-white hover:!bg-white hover:!text-primary">
               Comece hoje mesmo
             </CtaButton>
           </div>
