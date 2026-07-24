@@ -16,6 +16,10 @@ export const implementationSteps = [
     text: "Entrada em operação acompanhada em cada etapa.",
   },
   {
+    title: "Importação",
+    text: "Importe dados do sistema antigo.",
+  },
+  {
     title: "Operação",
     text: "Sua oficina roda com controle e evolução contínua.",
   },

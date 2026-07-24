@@ -473,9 +473,9 @@ export function ImplementationVisualSection() {
       <div className={container}>
         <SectionIntro
           eyebrow="Implantação"
-          title="Implante o ERP da sua oficina sem parar a operação."
+          title="Implante o novo sistema da sua oficina, sem parar a operação."
         />
-        <div className="mt-16 grid gap-8 md:grid-cols-5 md:gap-4">
+        <div className="mt-16 grid gap-8 md:grid-cols-3 md:gap-4 lg:grid-cols-6">
           {implementationSteps.map((step, index) => (
             <article key={step.title} className="relative">
               {index < implementationSteps.length - 1 && (

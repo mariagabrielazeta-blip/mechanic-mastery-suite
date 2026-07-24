@@ -126,7 +126,7 @@ export default function ModulosCarousel() {
             Tudo o que sua oficina precisa. Em um único sistema.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-            Do primeiro atendimento à entrega do veículo, conectamos pessoas, processos e informações para sua operação funcionar de forma organizada e previsível.
+            Do primeiro atendimento à entrega do veículo, do atendimento ao pós venda, conectamos pessoas, processos e informações para sua operação funcionar de forma organizada e previsível.
           </p>
         </motion.div>
 

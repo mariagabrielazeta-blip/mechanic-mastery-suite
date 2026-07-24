@@ -315,7 +315,7 @@ function ConversionDemoSection() {
       <div className="container-x mx-auto grid max-w-[1200px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <SectionKicker>Demonstração gratuita</SectionKicker>
-          <h2 className="text-5xl md:text-7xl">Veja o ERP para oficina mecânica na prática.</h2>
+          <h2 className="text-5xl md:text-7xl">Veja seu novo sistema na prática.</h2>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-white/65">Agende uma demonstração gratuita e veja como o Super Fast conecta atendimento, ordens de serviço, estoque e financeiro em um único sistema de gestão para oficinas mecânicas.</p>
           <div className="mt-10 grid gap-4">
             {benefits.map((item) => (
@@ -421,12 +421,12 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/40" />
         <div className="container-x relative flex h-full items-end justify-start pb-32 md:pb-36">
           <div className="max-w-xl rounded-[2rem] border border-white/18 bg-black/22 p-6 text-left text-white shadow-[0_28px_90px_-45px_rgba(0,0,0,0.95)] backdrop-blur-xl md:p-8 lg:p-10">
-            <span className="eyebrow mb-5 block text-white/80">ERP para empresas automotivas</span>
+            <span className="eyebrow mb-5 block text-white/80">Sistema para empresas automotivas</span>
             <h1 className="text-4xl text-white md:text-6xl lg:text-7xl [text-shadow:0_4px_16px_rgba(0,0,0,0.45)]">
-              A inteligência que coloca sua operação em alta performance.
+              Inteligência que coloca sua operação em alta performance.
             </h1>
             <p className="mt-6 max-w-lg text-sm leading-relaxed text-white/78 md:text-base">
-              Um ERP desenvolvido para empresas automotivas que buscam controle absoluto, decisões rápidas e crescimento sustentável.
+              Um sistema desenvolvido para empresas automotivas que buscam controle absoluto, decisões rápidas e crescimento sustentável.
             </p>
           </div>
         </div>
@@ -454,7 +454,8 @@ function Home() {
             <Logo tone="header" />
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-            <a href="mailto:contato@sfast.com.br" className="hover:text-white">contato@sfast.com.br</a>
+            <a href="mailto:atendimento@superfast.com.br" className="hover:text-white">atendimento@superfast.com.br</a>
+            <a href="mailto:igor@superfast.com.br" className="hover:text-white">igor@superfast.com.br</a>
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-white">WhatsApp</a>
             <span>Porto Alegre/RS</span>
             <a
