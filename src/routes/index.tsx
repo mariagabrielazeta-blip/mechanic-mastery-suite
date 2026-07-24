@@ -227,6 +227,7 @@ const TESTIMONIALS = [
     image: gersonImg,
     name: "Gerson",
     company: "Oficina Fleschcar",
+    objectPosition: "center 15%",
     quote:
       "Aprendemos que é uma construção conjunta, pois, o melhor sistema de gestão, não funciona sozinho, sem a participação do dono da oficina. A SFAST, sempre trouxe inovação para o negócio, organizou os processos, amarrando as etapas do trabalho, onde cada profissional participa, contribuindo para que, através dos indicadores fornecidos pelo sistema, os resultados sejam alcançados.",
   },
@@ -234,6 +235,7 @@ const TESTIMONIALS = [
     image: marceloPepeImg,
     name: "Marcelo Pepe",
     company: "Oficina PEPE",
+    objectPosition: "center 15%",
     quote:
       "É um software de gestão indispensável para o dia a dia do negócio. Integração, confiança da informação e fácil utilização. Mas mais do que isso, não se trata apenas de um sistema de gestão, pois a equipe de retaguarda está sempre pronta para atender eventuais dúvidas e ajudar o que for necessário para melhorarmos juntos.",
   },
@@ -241,6 +243,7 @@ const TESTIMONIALS = [
     image: wesleyImg,
     name: "Wesley",
     company: "Oficina Sapão",
+    objectPosition: "center 10%",
     quote:
       "Já conhecíamos o sistema Sfast há alguns anos por amigos que sempre elogiavam, mas achávamos que não era prioritário para nossa empresa. Depois de conhecer o Rui pessoalmente e conversamos sobre gestão de oficinas, sentimos a expertise da Sfast e resolvemos arriscar. Hoje, após três anos, não conseguimos enxergar nossa oficina operando sem o sistema. Posso afirmar que mais do que clientes, viramos amigos e claro, fãs!",
   },
@@ -257,6 +260,31 @@ function SectionKicker({ children }: { children: React.ReactNode }) {
 
 
 function ProofSection() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const dragState = useRef({ dragging: false, startX: 0, startScroll: 0, moved: false });
+
+  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (!el) return;
+    dragState.current = { dragging: true, startX: event.clientX, startScroll: el.scrollLeft, moved: false };
+    el.setPointerCapture(event.pointerId);
+  };
+
+  const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    const state = dragState.current;
+    if (!el || !state.dragging) return;
+    const delta = event.clientX - state.startX;
+    if (Math.abs(delta) > 3) state.moved = true;
+    el.scrollLeft = state.startScroll - delta;
+  };
+
+  const endDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (el?.hasPointerCapture(event.pointerId)) el.releasePointerCapture(event.pointerId);
+    dragState.current.dragging = false;
+  };
+
   return (
     <section id="depoimentos" className="bg-[#F3F3F1] py-24 text-ink md:py-32">
       <div className="container-x mx-auto max-w-[1240px] overflow-hidden">
@@ -267,7 +295,14 @@ function ProofSection() {
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-ink-soft">Depoimentos reais de oficinas mecânicas que trocaram planilhas e retrabalho por um ERP feito para o dia a dia da oficina.</p>
         </div>
-        <div className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:-mx-8 md:gap-6 md:px-8 [&::-webkit-scrollbar]:hidden">
+        <div
+          ref={trackRef}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerLeave={endDrag}
+          className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:-mx-8 md:gap-6 md:px-8 [&::-webkit-scrollbar]:hidden cursor-grab active:cursor-grabbing"
+        >
           {TESTIMONIALS.map((item, index) => (
             <motion.article
               key={item.name}
@@ -280,7 +315,8 @@ function ProofSection() {
               <img
                 src={item.image}
                 alt={item.name}
-                className="absolute inset-0 h-full w-full object-cover object-top grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                style={{ objectPosition: item.objectPosition }}
+                className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/10 to-black/72 transition-colors duration-500 group-hover:bg-black/35" />
