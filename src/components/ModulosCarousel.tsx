@@ -123,7 +123,7 @@ export default function ModulosCarousel() {
             Gestão inteligente
           </span>
           <h2 className="mt-5 text-4xl font-bold uppercase leading-[0.95] text-black md:text-6xl lg:text-7xl">
-            Tudo o que sua oficina precisa. Em um único sistema.
+            Tudo o que sua oficina de reparação automotiva precisa. Em um único sistema.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
             Do primeiro atendimento à entrega do veículo, do atendimento ao pós venda, conectamos pessoas, processos e informações para sua operação funcionar de forma organizada e previsível.

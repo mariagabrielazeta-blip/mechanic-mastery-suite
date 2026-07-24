@@ -79,25 +79,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Super Fast | ERP para oficinas mecânicas" },
+      { title: "Super Fast | ERP para oficinas de reparação automotiva" },
       {
         name: "description",
         content:
-          "O ERP completo para oficinas que querem controle total, mais produtividade e resultados reais. Ordens de serviço, estoque, financeiro e indicadores em um só sistema.",
+          "O ERP completo para oficinas de reparação automotiva que querem controle total, mais produtividade e resultados reais. Ordens de serviço, estoque, financeiro e indicadores em um só sistema.",
       },
-      { property: "og:title", content: "Super Fast | ERP para oficinas mecânicas" },
+      { property: "og:title", content: "Super Fast | ERP para oficinas de reparação automotiva" },
       {
         property: "og:description",
         content:
-          "O ERP completo para oficinas que querem controle total, mais produtividade e resultados reais. Ordens de serviço, estoque, financeiro e indicadores em um só sistema.",
+          "O ERP completo para oficinas de reparação automotiva que querem controle total, mais produtividade e resultados reais. Ordens de serviço, estoque, financeiro e indicadores em um só sistema.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Super Fast | ERP para oficinas mecânicas" },
+      { name: "twitter:title", content: "Super Fast | ERP para oficinas de reparação automotiva" },
       {
         name: "twitter:description",
         content:
-          "O ERP completo para oficinas que querem controle total, mais produtividade e resultados reais. Ordens de serviço, estoque, financeiro e indicadores em um só sistema.",
+          "O ERP completo para oficinas de reparação automotiva que querem controle total, mais produtividade e resultados reais. Ordens de serviço, estoque, financeiro e indicadores em um só sistema.",
       },
       {
         property: "og:image",
