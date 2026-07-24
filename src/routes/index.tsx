@@ -448,7 +448,7 @@ function Home() {
       <ConversionDemoSection />
 
       {/* Footer */}
-      <footer className="border-t border-black/5 bg-primary text-white/80">
+      <footer className="border-t border-black/5 bg-[#2A2A2A] text-white/80">
         <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
           <div className="[&_img]:brightness-0 [&_img]:invert [&_span]:!text-white">
             <Logo tone="header" />
