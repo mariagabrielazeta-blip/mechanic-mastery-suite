@@ -454,8 +454,7 @@ function Home() {
             <Logo tone="header" />
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-            <a href="mailto:atendimento@superfast.com.br" className="hover:text-white">atendimento@superfast.com.br</a>
-            <a href="mailto:igor@superfast.com.br" className="hover:text-white">igor@superfast.com.br</a>
+            <a href="mailto:contato@sfast.com.br" className="hover:text-white">contato@sfast.com.br</a>
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-white">WhatsApp</a>
             <span>Porto Alegre/RS</span>
             <a

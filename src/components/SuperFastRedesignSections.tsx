@@ -30,6 +30,8 @@ type ScheduleHandler = () => void;
 const WHATSAPP_URL =
   "https://wa.me/5551984277489?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20sobre%20o%20Super%20Fast.";
 
+const DEMO_FORM_RECIPIENTS = ["atendimento@superfast.com.br", "igor@superfast.com.br"];
+
 const sectionBase = "relative overflow-hidden bg-[#F8F8F6] text-ink";
 const container = "container-x mx-auto max-w-[1200px]";
 
@@ -520,6 +522,17 @@ export function DemoForm({ compact = false, onSuccess }: DemoFormProps) {
       return setError("Preencha os campos para solicitar a demonstração.");
     setError("");
     setLoading(true);
+
+    const subject = `Solicitação de demonstração - ${values.company}`;
+    const body = [
+      `Nome: ${values.name}`,
+      `Empresa: ${values.company}`,
+      `WhatsApp: ${values.phone}`,
+      `Cidade: ${values.city}`,
+    ].join("\n");
+    const mailtoUrl = `mailto:${DEMO_FORM_RECIPIENTS.join(",")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+
     window.setTimeout(() => {
       setLoading(false);
       setSent(true);
@@ -531,9 +544,9 @@ export function DemoForm({ compact = false, onSuccess }: DemoFormProps) {
     return (
       <div className="rounded-3xl border border-primary/30 bg-primary/10 p-8 text-center">
         <CheckCircle2 className="mx-auto h-10 w-10 text-primary" />
-        <h3 className="mt-4 text-3xl text-white">Solicitação recebida.</h3>
+        <h3 className="mt-4 text-3xl text-white">Solicitação enviada.</h3>
         <p className="mt-3 text-sm leading-relaxed text-white/65">
-          Nossa equipe entrará em contato para agendar sua demonstração.
+          Abrimos seu e-mail com a solicitação preenchida. Basta confirmar o envio para nossa equipe entrar em contato.
         </p>
       </div>
     );
