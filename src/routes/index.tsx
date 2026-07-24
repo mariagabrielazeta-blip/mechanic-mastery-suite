@@ -19,9 +19,9 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import logoImg from "@/assets/sflogo.png";
-import customerImg from "@/assets/customer.jpg";
-import receptionImg from "@/assets/reception.jpg";
-import teamImg from "@/assets/team.jpg";
+import gersonImg from "@/assets/testimonial-gerson.png";
+import marceloPepeImg from "@/assets/testimonial-marcelo-pepe.png";
+import wesleyImg from "@/assets/testimonial-wesley.png";
 import { CtaButton } from "@/components/CtaButton";
 import ModulosCarousel from "@/components/ModulosCarousel";
 import { DemoForm, ImplementationVisualSection } from "@/components/SuperFastRedesignSections";
@@ -224,22 +224,25 @@ const TIMELINE = [
 
 const TESTIMONIALS = [
   {
-    image: customerImg,
-    name: "Renato Alves",
-    company: "Rápida Sul Centro Automotivo",
-    quote: "A equipa deixou de procurar informação em mensagens. Hoje cada OS tem contexto e responsável.",
+    image: gersonImg,
+    name: "Gerson",
+    company: "Oficina Fleschcar",
+    quote:
+      "Aprendemos que é uma construção conjunta, pois, o melhor sistema de gestão, não funciona sozinho, sem a participação do dono da oficina. A ZETA INFORMÁTICA, sempre trouxe inovação para o negócio, organizou os processos, amarrando as etapas do trabalho, onde cada profissional participa, contribuindo para que, através dos indicadores fornecidos pelo sistema, os resultados sejam alcançados.",
   },
   {
-    image: receptionImg,
-    name: "Carla Menezes",
-    company: "Oficina Prime Car",
-    quote: "O atendimento ficou mais profissional. O cliente percebe organização desde o primeiro contacto.",
+    image: marceloPepeImg,
+    name: "Marcelo Pepe",
+    company: "Oficina PEPE",
+    quote:
+      "É um software de gestão indispensável para o dia a dia do negócio. Integração, confiança da informação e fácil utilização. Mas mais do que isso, não se trata apenas de um sistema de gestão, pois a equipe de retaguarda está sempre pronta para atender eventuais dúvidas e ajudar o que for necessário para melhorarmos juntos.",
   },
   {
-    image: teamImg,
-    name: "Marcelo Rocha",
-    company: "Auto Giro Serviços",
-    quote: "Financeiro, peças e agenda finalmente conversam. Ficou claro onde a oficina ganhava e perdia tempo.",
+    image: wesleyImg,
+    name: "Wesley",
+    company: "Oficina Sapão",
+    quote:
+      "Já conhecíamos o sistema Zeta há alguns anos por amigos que sempre elogiavam, mas achávamos que não era prioritário para nossa empresa. Depois de conhecer o Rui pessoalmente e conversamos sobre gestão de oficinas, sentimos a expertise da Zeta e resolvemos arriscar. Hoje, após três anos, não conseguimos enxergar nossa oficina operando sem o sistema. Posso afirmar que mais do que clientes, viramos amigos e claro, fãs!",
   },
 ];
 
