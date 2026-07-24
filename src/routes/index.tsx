@@ -297,7 +297,7 @@ function TestimonialVideoBlock() {
         </div>
         <div className="absolute inset-x-0 bottom-0 p-6 text-left text-white md:p-8">
           <div className="eyebrow text-primary">Super Fast</div>
-          <div className="mt-2 font-display text-2xl leading-none md:text-3xl">Veja e ouça quem já usa</div>
+          <div className="mt-2 font-display text-2xl leading-none md:text-3xl">Oficinas que confiam no Super Fast</div>
         </div>
       </button>
 
