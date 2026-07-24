@@ -366,7 +366,7 @@ function ProofSection() {
             <SectionKicker>Depoimentos</SectionKicker>
             <h2 className="max-w-3xl text-4xl md:text-6xl">Oficinas de reparação automotiva que já sentem a diferença.</h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-ink-soft">Depoimentos reais de oficinas de reparação automotiva que trocaram planilhas e retrabalho por um ERP feito para o dia a dia da oficina.</p>
+          <p className="max-w-sm text-sm leading-relaxed text-ink-soft">Depoimentos reais de oficinas que trocaram planilhas e retrabalho por um ERP feito para o dia a dia da oficina.</p>
         </div>
         <TestimonialVideoBlock />
         <div
@@ -429,7 +429,7 @@ function ConversionDemoSection() {
         <div>
           <SectionKicker>Demonstração gratuita</SectionKicker>
           <h2 className="text-5xl md:text-7xl">Veja seu novo sistema na prática.</h2>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-white/65">Agende uma demonstração gratuita e veja como o Super Fast conecta atendimento, ordens de serviço, estoque e financeiro em um único sistema de gestão para oficinas de reparação automotiva.</p>
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-white/65">Agende uma demonstração gratuita e veja como o Super Fast conecta atendimento, ordens de serviço, estoque e financeiro em um único sistema de gestão para oficinas.</p>
           <div className="mt-10 grid gap-4">
             {benefits.map((item) => (
               <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm font-semibold text-white/80">

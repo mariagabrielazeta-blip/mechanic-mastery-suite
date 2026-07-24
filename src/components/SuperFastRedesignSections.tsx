@@ -65,9 +65,9 @@ export function GrowthContextSection() {
     <section className="relative overflow-hidden bg-[#F8F8F6] py-32 text-ink md:py-44">
       <div className="container-x mx-auto max-w-[1120px]">
         <div className="mx-auto max-w-4xl text-center">
-          <span className="eyebrow text-primary">Quando a oficina de reparação automotiva cresce</span>
+          <span className="eyebrow text-primary">Quando a oficina cresce</span>
           <h2 className="mt-8 text-4xl md:text-6xl lg:text-7xl">
-            Toda oficina de reparação automotiva quer crescer.
+            Toda oficina quer crescer.
             <br />
             <span className="text-ink-soft">Mas crescer também aumenta a pressão.</span>
           </h2>
@@ -105,7 +105,7 @@ export function QuickBenefitsSection() {
         <div className="mb-8 text-center">
           <span className="eyebrow text-primary">Operação integrada</span>
           <h2 className="mt-3 text-3xl text-white md:text-4xl">
-            Toda a operação da sua oficina de reparação automotiva em um só lugar.
+            Toda a operação da sua oficina em um só lugar.
           </h2>
         </div>
         <div className="relative grid gap-4 md:grid-cols-3">
@@ -137,7 +137,7 @@ export function PanelIntroSection() {
       <div className={`${container} text-center`}>
         <span className="eyebrow text-primary">Veja a operação em movimento</span>
         <h2 className="mx-auto mt-4 max-w-3xl text-4xl md:text-5xl">
-          Explore como cada etapa da oficina de reparação automotiva se conecta.
+          Explore como cada etapa da oficina se conecta.
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-ink-soft">
           Clique nos pontos do painel e conheça o fluxo completo.
@@ -193,8 +193,8 @@ export function InteractiveProblemsSection() {
       <div className="absolute right-[-12rem] top-[-12rem] h-[32rem] w-[32rem] rounded-full bg-primary/10 blur-3xl" />
       <div className={container}>
         <SectionIntro
-          eyebrow="Gargalos da oficina de reparação automotiva"
-          title="Onde sua oficina de reparação automotiva perde tempo e dinheiro?"
+          eyebrow="Gargalos da oficina"
+          title="Onde sua oficina perde tempo e dinheiro?"
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
