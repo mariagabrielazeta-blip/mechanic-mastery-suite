@@ -15,6 +15,7 @@ import {
   Workflow,
   Wrench,
   Instagram,
+  Play,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -259,6 +260,78 @@ function SectionKicker({ children }: { children: React.ReactNode }) {
 }
 
 
+function TestimonialVideoBlock() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label="Assistir vídeo de depoimentos Super Fast"
+        className="group relative mb-10 block aspect-video w-full overflow-hidden rounded-[34px] border border-black/5 bg-ink shadow-[0_30px_90px_-62px_rgba(17,17,17,0.85)]"
+      >
+        <video
+          src="/videos/sfast-depoimento.mp4"
+          preload="metadata"
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-black/35 transition-colors duration-500 group-hover:bg-black/45" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="grid h-20 w-20 place-items-center rounded-full bg-primary text-white shadow-[0_18px_45px_-20px_rgba(209,18,18,0.9)] transition-transform duration-300 group-hover:scale-110 md:h-24 md:w-24">
+            <Play className="h-9 w-9 translate-x-0.5 fill-current md:h-10 md:w-10" />
+          </span>
+        </div>
+        <div className="absolute inset-x-0 bottom-0 p-6 text-left text-white md:p-8">
+          <div className="eyebrow text-primary">Super Fast</div>
+          <div className="mt-2 font-display text-2xl leading-none md:text-3xl">Veja e ouça quem já usa</div>
+        </div>
+      </button>
+
+      {open && (
+        <div
+          className="fixed inset-0 z-[10000] grid place-items-center bg-black/90 p-4 backdrop-blur-md"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Vídeo de depoimentos Super Fast"
+          onMouseDown={(event) => event.target === event.currentTarget && setOpen(false)}
+        >
+          <div className="relative w-full max-w-4xl">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Fechar vídeo"
+              className="absolute -top-12 right-0 grid h-10 w-10 place-items-center rounded-full border border-white/20 text-white/80 hover:border-primary hover:text-primary"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <video
+              src="/videos/sfast-depoimento.mp4"
+              controls
+              autoPlay
+              playsInline
+              className="w-full rounded-2xl bg-black"
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 function ProofSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const dragState = useRef({ dragging: false, startX: 0, startScroll: 0, moved: false });
@@ -295,6 +368,7 @@ function ProofSection() {
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-ink-soft">Depoimentos reais de oficinas mecânicas que trocaram planilhas e retrabalho por um ERP feito para o dia a dia da oficina.</p>
         </div>
+        <TestimonialVideoBlock />
         <div
           ref={trackRef}
           onPointerDown={onPointerDown}
