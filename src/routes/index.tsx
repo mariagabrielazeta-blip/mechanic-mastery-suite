@@ -228,7 +228,7 @@ const TESTIMONIALS = [
     name: "Gerson",
     company: "Oficina Fleschcar",
     quote:
-      "Aprendemos que é uma construção conjunta, pois, o melhor sistema de gestão, não funciona sozinho, sem a participação do dono da oficina. A ZETA INFORMÁTICA, sempre trouxe inovação para o negócio, organizou os processos, amarrando as etapas do trabalho, onde cada profissional participa, contribuindo para que, através dos indicadores fornecidos pelo sistema, os resultados sejam alcançados.",
+      "Aprendemos que é uma construção conjunta, pois, o melhor sistema de gestão, não funciona sozinho, sem a participação do dono da oficina. A SFAST, sempre trouxe inovação para o negócio, organizou os processos, amarrando as etapas do trabalho, onde cada profissional participa, contribuindo para que, através dos indicadores fornecidos pelo sistema, os resultados sejam alcançados.",
   },
   {
     image: marceloPepeImg,
@@ -242,7 +242,7 @@ const TESTIMONIALS = [
     name: "Wesley",
     company: "Oficina Sapão",
     quote:
-      "Já conhecíamos o sistema Zeta há alguns anos por amigos que sempre elogiavam, mas achávamos que não era prioritário para nossa empresa. Depois de conhecer o Rui pessoalmente e conversamos sobre gestão de oficinas, sentimos a expertise da Zeta e resolvemos arriscar. Hoje, após três anos, não conseguimos enxergar nossa oficina operando sem o sistema. Posso afirmar que mais do que clientes, viramos amigos e claro, fãs!",
+      "Já conhecíamos o sistema Sfast há alguns anos por amigos que sempre elogiavam, mas achávamos que não era prioritário para nossa empresa. Depois de conhecer o Rui pessoalmente e conversamos sobre gestão de oficinas, sentimos a expertise da Sfast e resolvemos arriscar. Hoje, após três anos, não conseguimos enxergar nossa oficina operando sem o sistema. Posso afirmar que mais do que clientes, viramos amigos e claro, fãs!",
   },
 ];
 
@@ -280,7 +280,7 @@ function ProofSection() {
               <img
                 src={item.image}
                 alt={item.name}
-                className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                className="absolute inset-0 h-full w-full object-cover object-top grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/10 to-black/72 transition-colors duration-500 group-hover:bg-black/35" />
@@ -289,7 +289,7 @@ function ProofSection() {
                   <div className="eyebrow text-primary">Super Fast</div>
                   <div className="mt-3 font-display text-4xl leading-none">{item.name}</div>
                   <div className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/62">{item.company}</div>
-                  <p className="mt-5 max-h-0 overflow-hidden text-sm leading-relaxed text-white/82 opacity-0 transition-all duration-500 group-hover:max-h-40 group-hover:opacity-100">
+                  <p className="mt-5 max-h-0 overflow-hidden text-sm leading-relaxed text-white/82 opacity-0 transition-all duration-500 group-hover:max-h-64 group-hover:opacity-100">
                     “{item.quote}”
                   </p>
                 </div>
