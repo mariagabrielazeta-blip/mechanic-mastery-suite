@@ -122,7 +122,7 @@ export default function ModulosCarousel() {
           <span className="text-xs font-bold uppercase tracking-[0.28em] text-[#E63946]">
             Gestão Inteligente
           </span>
-          <h2 className="mt-8 text-4xl font-bold uppercase leading-[1.15] text-black md:text-6xl lg:text-7xl">
+          <h2 className="mt-8 text-4xl font-bold uppercase leading-[1.25] text-black md:text-6xl lg:text-7xl">
             Tudo o que sua oficina precisa. Em um único sistema.
           </h2>
           <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
