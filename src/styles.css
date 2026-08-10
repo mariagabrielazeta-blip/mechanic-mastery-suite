@@ -86,7 +86,7 @@ body {
   h4 {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
-    line-height: 1.4;
+    line-height: 1.65 !important;
     text-transform: uppercase;
   }
 }
