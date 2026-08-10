@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -15,6 +15,9 @@ import {
   Workflow,
   Wrench,
   Instagram,
+  Youtube,
+  Facebook,
+  Linkedin,
   Play,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -26,6 +29,7 @@ import wesleyImg from "@/assets/testimonial-wesley.png";
 import { CtaButton } from "@/components/CtaButton";
 import ModulosCarousel from "@/components/ModulosCarousel";
 import { DemoForm, ImplementationVisualSection } from "@/components/SuperFastRedesignSections";
+import { UniversoSuperfastSection } from "@/components/UniversoSuperfastSection";
 
 const SITE_URL = "https://mechanic-mastery-suite.vercel.app/";
 
@@ -43,7 +47,7 @@ export const Route = createFileRoute("/")({
 const LOGIN_URL = "https://erp.sfast.com.br";
 
 const NAV = [
-  { label: "Gestão inteligente", href: "#capacidade" },
+  { label: "Gestão Inteligente", href: "#capacidade" },
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Implantação", href: "#implantacao" },
   { label: "Demonstração", href: "#contato" },
@@ -53,6 +57,10 @@ const NAV = [
 const WHATSAPP_URL =
   "https://wa.me/5551984277489?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20sobre%20o%20Super%20Fast.";
 const INSTAGRAM_URL = "https://www.instagram.com/";
+// Placeholders — substituir pelos links oficiais das redes sociais
+const YOUTUBE_URL = "#";
+const FACEBOOK_URL = "#";
+const LINKEDIN_URL = "#";
 
 /* ---------- HELPERS ---------- */
 
@@ -428,8 +436,8 @@ function ConversionDemoSection() {
       <div className="container-x mx-auto grid max-w-[1200px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <SectionKicker>Demonstração gratuita</SectionKicker>
-          <h2 className="text-5xl md:text-7xl">Veja seu novo sistema na prática.</h2>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-white/65">Agende uma demonstração gratuita e veja como o Super Fast conecta atendimento, ordens de serviço, estoque e financeiro em um único sistema de gestão para oficinas.</p>
+          <h2 className="mt-2 mb-2 text-5xl md:text-7xl">Veja seu novo sistema na prática.</h2>
+          <p className="mt-9 max-w-lg text-base leading-relaxed text-white/65">Agende uma demonstração gratuita e veja como o Super Fast conecta atendimento, ordens de serviço, estoque e financeiro em um único sistema de gestão para oficinas.</p>
           <div className="mt-10 grid gap-4">
             {benefits.map((item) => (
               <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm font-semibold text-white/80">
@@ -557,6 +565,7 @@ function Home() {
       <ModulosCarousel />
 
       <ProofSection />
+      <UniversoSuperfastSection />
       <ImplementationVisualSection />
       <ConversionDemoSection />
 
@@ -568,6 +577,7 @@ function Home() {
             <a href="mailto:contato@sfast.com.br" className="hover:text-white">contato@sfast.com.br</a>
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-white">WhatsApp</a>
             <span>Porto Alegre/RS</span>
+            <Link to="/politica-de-privacidade" className="hover:text-white">Política de Privacidade</Link>
             <a
               href={INSTAGRAM_URL}
               target="_blank"
@@ -577,13 +587,43 @@ function Home() {
             >
               <Instagram className="h-4 w-4" />
             </a>
+            <a
+              href={YOUTUBE_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+              className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
+            >
+              <Youtube className="h-4 w-4" />
+            </a>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
+            >
+              <Facebook className="h-4 w-4" />
+            </a>
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
           </div>
           <div className="flex w-full justify-center md:w-auto">
             <CtaButton variant="outline" href={WHATSAPP_URL} target="_blank" className="!px-5 !py-2.5 !border-white !text-white hover:!bg-white hover:!text-primary">
               Comece hoje mesmo
             </CtaButton>
           </div>
-          <div className="text-xs">© {new Date().getFullYear()} Super Fast</div>
+          <div className="text-xs">
+            <div>© {new Date().getFullYear()} Super Fast</div>
+            <div className="mt-1 text-white/50">Desenvolvido pela Conexão Z</div>
+          </div>
         </div>
       </footer>
     </div>

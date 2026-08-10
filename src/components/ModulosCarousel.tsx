@@ -120,18 +120,18 @@ export default function ModulosCarousel() {
           className="mx-auto max-w-4xl text-center"
         >
           <span className="text-xs font-bold uppercase tracking-[0.28em] text-[#E63946]">
-            Gestão inteligente
+            Gestão Inteligente
           </span>
-          <h2 className="mt-5 text-4xl font-bold uppercase leading-[0.95] text-black md:text-6xl lg:text-7xl">
+          <h2 className="mt-8 text-4xl font-bold uppercase leading-[0.95] text-black md:text-6xl lg:text-7xl">
             Tudo o que sua oficina precisa. Em um único sistema.
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
+          <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
             Do primeiro atendimento à entrega do veículo, do atendimento ao pós venda, conectamos pessoas, processos e informações para sua operação funcionar de forma organizada e previsível.
           </p>
         </motion.div>
 
         <div
-          className="relative mx-auto mt-8 h-[500px] max-w-[1020px] md:mt-10 md:h-[570px]"
+          className="relative mx-auto mt-14 h-[500px] max-w-[1020px] md:mt-16 md:h-[570px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
