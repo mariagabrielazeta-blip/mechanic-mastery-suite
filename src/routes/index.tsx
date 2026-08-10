@@ -131,8 +131,8 @@ function Logo({
   if (tone === "footer") {
     return (
       <a href="#top" className="flex items-center gap-2.5 shrink-0">
-        <img src={logoImg} alt="Super Fast" className={`${className} w-auto brightness-0`} />
-        <span className="font-display text-xl tracking-tight leading-none text-ink">SUPERFAST</span>
+        <img src={logoImg} alt="Super Fast" className={`${className} w-auto`} />
+        <span className="font-display text-xl tracking-tight leading-none text-white">SUPERFAST</span>
       </a>
     );
   }
@@ -563,9 +563,7 @@ function Home() {
       {/* Footer */}
       <footer className="border-t border-black/5 bg-[#2A2A2A] text-white/80">
         <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
-          <div className="[&_img]:brightness-0 [&_img]:invert [&_span]:!text-white">
-            <Logo tone="header" />
-          </div>
+          <Logo tone="header" />
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
             <a href="mailto:contato@sfast.com.br" className="hover:text-white">contato@sfast.com.br</a>
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-white">WhatsApp</a>
