@@ -571,7 +571,7 @@ function Home() {
 
       {/* Footer */}
       <footer className="border-t border-black/5 bg-[#2A2A2A] text-white/80">
-        <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
+        <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between lg:gap-x-6 lg:gap-y-4">
           <Logo tone="header" />
           <div className="flex flex-col items-center gap-4 md:items-start">
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm md:justify-start">
@@ -619,14 +619,14 @@ function Home() {
               </a>
             </div>
           </div>
-          <div className="flex w-full justify-center md:w-auto">
-            <CtaButton variant="outline" href={WHATSAPP_URL} target="_blank" className="!px-5 !py-2.5 !border-white !text-white hover:!bg-white hover:!text-primary">
+          <div className="flex w-full justify-center lg:w-auto lg:shrink-0">
+            <CtaButton variant="outline" href={WHATSAPP_URL} target="_blank" className="!px-5 !py-2.5 !border-white !text-white hover:!bg-white hover:!text-primary whitespace-nowrap">
               Comece hoje mesmo
             </CtaButton>
           </div>
-          <div className="text-xs">
-            <div>© {new Date().getFullYear()} Super Fast</div>
-            <div className="mt-1 text-white/50">Desenvolvido pela Conexão Z</div>
+          <div className="shrink-0 text-center text-xs lg:text-right">
+            <div className="whitespace-nowrap">© {new Date().getFullYear()} Super Fast</div>
+            <div className="mt-1 whitespace-nowrap text-white/50">Desenvolvido pela Conexão Z</div>
           </div>
         </div>
       </footer>
