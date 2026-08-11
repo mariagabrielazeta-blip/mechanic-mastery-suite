@@ -573,47 +573,51 @@ function Home() {
       <footer className="border-t border-black/5 bg-[#2A2A2A] text-white/80">
         <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 md:flex-row md:items-center md:justify-between">
           <Logo tone="header" />
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-            <a href="mailto:contato@sfast.com.br" className="hover:text-white">contato@sfast.com.br</a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-white">WhatsApp</a>
-            <span>Porto Alegre/RS</span>
-            <Link to="/politica-de-privacidade" className="hover:text-white">Política de Privacidade</Link>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
-            >
-              <Instagram className="h-4 w-4" />
-            </a>
-            <a
-              href={YOUTUBE_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="YouTube"
-              className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
-            >
-              <Youtube className="h-4 w-4" />
-            </a>
-            <a
-              href={FACEBOOK_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Facebook"
-              className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
-            >
-              <Facebook className="h-4 w-4" />
-            </a>
-            <a
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
-            >
-              <Linkedin className="h-4 w-4" />
-            </a>
+          <div className="flex flex-col items-center gap-4 md:items-start">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm md:justify-start">
+              <a href="mailto:contato@sfast.com.br" className="hover:text-white">contato@sfast.com.br</a>
+              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-white">WhatsApp</a>
+              <span>Porto Alegre/RS</span>
+              <Link to="/politica-de-privacidade" className="hover:text-white">Política de Privacidade</Link>
+            </div>
+            <div className="flex shrink-0 items-center gap-3">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
+              >
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a
+                href={YOUTUBE_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="YouTube"
+                className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
+              >
+                <Youtube className="h-4 w-4" />
+              </a>
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="flex items-center justify-center rounded-full border border-white/40 p-2 text-white transition hover:bg-white hover:text-primary"
+              >
+                <Linkedin className="h-4 w-4" />
+              </a>
+            </div>
           </div>
           <div className="flex w-full justify-center md:w-auto">
             <CtaButton variant="outline" href={WHATSAPP_URL} target="_blank" className="!px-5 !py-2.5 !border-white !text-white hover:!bg-white hover:!text-primary">
