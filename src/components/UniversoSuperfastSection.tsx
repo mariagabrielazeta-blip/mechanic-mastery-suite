@@ -45,13 +45,19 @@ function InstagramCarousel({ profile }: { profile: InstagramProfile }) {
         </a>
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-2xl">
+      <div className="relative mt-6 w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "3 / 2" }}>
         <iframe
           src={profile.embedUrl}
-          className="w-full border-0"
-          style={{ height: 320 }}
           scrolling="no"
           title={`Posts from Instagram - ${profile.name}`}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            border: 0,
+          }}
         />
       </div>
     </div>
