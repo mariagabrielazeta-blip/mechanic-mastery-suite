@@ -18,7 +18,7 @@ const PROFILES: InstagramProfile[] = [
     handle: "@reparashow",
     name: "Reparashow",
     url: "https://www.instagram.com/reparashow/",
-    embedUrl: "https://snapwidget.com/embed/1128778",
+    embedUrl: "https://snapwidget.com/embed/1128783",
   },
 ];
 
