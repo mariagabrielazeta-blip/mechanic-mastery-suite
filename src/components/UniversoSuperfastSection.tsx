@@ -51,7 +51,7 @@ function InstagramCarousel({ profile }: { profile: InstagramProfile }) {
           scrolling="no"
           title={`Posts from Instagram - ${profile.name}`}
           className="block w-full border-0"
-          style={{ height: 260 }}
+          style={{ height: 600 }}
         />
       </div>
     </div>
