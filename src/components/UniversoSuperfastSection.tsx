@@ -50,8 +50,8 @@ function InstagramCarousel({ profile }: { profile: InstagramProfile }) {
           src={profile.embedUrl}
           scrolling="no"
           title={`Posts from Instagram - ${profile.name}`}
-          className="block w-full border-0"
-          style={{ height: 800 }}
+          className="block w-full rounded-2xl border-0"
+          style={{ height: 480 }}
         />
       </div>
     </div>
