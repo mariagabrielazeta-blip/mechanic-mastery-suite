@@ -23,6 +23,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import logoImg from "@/assets/sflogo.png";
+import headerLogoImg from "@/assets/rentflowlogo.png";
 import gersonImg from "@/assets/testimonial-gerson.png";
 import marceloPepeImg from "@/assets/testimonial-marcelo-pepe.png";
 import wesleyImg from "@/assets/testimonial-wesley.png";
@@ -146,7 +147,7 @@ function Logo({
   }
   return (
     <a href="#top" className="flex items-center gap-2.5 shrink-0">
-      <img src={logoImg} alt="Super Fast" className={`${className} w-auto`} />
+      <img src={headerLogoImg} alt="Super Fast" className={`${className} w-auto`} />
       <span className="font-display text-xl tracking-tight leading-none text-white">SUPERFAST</span>
     </a>
   );
