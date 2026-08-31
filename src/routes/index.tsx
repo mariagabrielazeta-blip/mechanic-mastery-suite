@@ -538,6 +538,7 @@ function Home() {
           muted
           loop
           playsInline
+          preload="auto"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/40" />
         <div className="container-x relative flex h-full items-end justify-start pb-32 md:pb-36">
