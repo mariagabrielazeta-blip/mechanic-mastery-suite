@@ -84,7 +84,10 @@ function PoliticaDePrivacidade() {
       </main>
 
       <footer className="border-t border-black/5 bg-[#2A2A2A] py-8 text-center text-xs text-white/60">
-        © {new Date().getFullYear()} Super Fast · Desenvolvido pela Conexão Z
+        © {new Date().getFullYear()} Super Fast · Desenvolvido pela{" "}
+        <a href="https://conexaoz.com.br/" target="_blank" rel="noreferrer" className="hover:text-white">
+          Conexão Z
+        </a>
       </footer>
     </div>
   );

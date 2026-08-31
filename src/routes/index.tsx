@@ -627,7 +627,12 @@ function Home() {
           </div>
           <div className="shrink-0 text-center text-xs lg:text-right">
             <div className="whitespace-nowrap">© {new Date().getFullYear()} Super Fast</div>
-            <div className="mt-1 whitespace-nowrap text-white/50">Desenvolvido pela Conexão Z</div>
+            <div className="mt-1 whitespace-nowrap text-white/50">
+              Desenvolvido pela{" "}
+              <a href="https://conexaoz.com.br/" target="_blank" rel="noreferrer" className="hover:text-white">
+                Conexão Z
+              </a>
+            </div>
           </div>
         </div>
       </footer>
