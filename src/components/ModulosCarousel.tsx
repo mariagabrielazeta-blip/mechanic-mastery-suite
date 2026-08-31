@@ -38,10 +38,10 @@ type ModuleItem = {
 
 const CATEGORIES: Record<CategoryId, { label: string; color: string; soft: string; border: string }> = {
   atendimento: { label: "Atendimento", color: "#E63946", soft: "#E63946", border: "#E63946" },
-  estoque: { label: "Estoque & Compras", color: "#2A78D6", soft: "#2A78D6", border: "#2A78D6" },
-  operacao: { label: "Operação & Vendas", color: "#1BAF7A", soft: "#1BAF7A", border: "#1BAF7A" },
-  financeiro: { label: "Financeiro", color: "#EDA100", soft: "#EDA100", border: "#EDA100" },
-  gestao: { label: "Gestão & Análise", color: "#4A3AA7", soft: "#4A3AA7", border: "#4A3AA7" },
+  estoque: { label: "Estoque & Compras", color: "#8A8A8A", soft: "#8A8A8A", border: "#8A8A8A" },
+  operacao: { label: "Operação & Vendas", color: "#8B1E28", soft: "#8B1E28", border: "#8B1E28" },
+  financeiro: { label: "Financeiro", color: "#4A4A4A", soft: "#4A4A4A", border: "#4A4A4A" },
+  gestao: { label: "Gestão & Análise", color: "#1A1A1A", soft: "#1A1A1A", border: "#1A1A1A" },
 };
 
 const modules: ModuleItem[] = [
