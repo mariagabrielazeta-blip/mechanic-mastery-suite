@@ -9,9 +9,9 @@ type InstagramProfile = {
 
 const PROFILES: InstagramProfile[] = [
   {
-    handle: "@superfast",
+    handle: "@zsuperfast",
     name: "Superfast",
-    url: "https://www.instagram.com/superfast/",
+    url: "https://www.instagram.com/zsuperfast/",
     embedUrl: "https://snapwidget.com/embed/1128777",
   },
   {
