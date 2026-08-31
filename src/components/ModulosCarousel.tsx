@@ -179,24 +179,24 @@ function getCardAnimation(offset: number) {
 
   if (absOffset === 1) {
     return {
-      x: direction * 250,
-      z: -200,
-      rotateY: direction * -30,
-      scale: 0.75,
-      opacity: 0.45,
-      filter: "blur(1.5px)",
+      x: direction * 280,
+      z: -120,
+      rotateY: direction * -48,
+      scale: 0.86,
+      opacity: 1,
+      filter: "blur(0px)",
       zIndex: 20,
       pointerEvents: "auto" as const,
     };
   }
 
   return {
-    x: direction * 360,
-    z: -380,
-    rotateY: direction * -40,
-    scale: 0.6,
-    opacity: 0,
-    filter: "blur(2px)",
+    x: direction * 460,
+    z: -260,
+    rotateY: direction * -52,
+    scale: 0.72,
+    opacity: absOffset === 2 ? 0.85 : 0,
+    filter: "blur(0px)",
     zIndex: 10,
     pointerEvents: "none" as const,
   };
@@ -296,8 +296,8 @@ export default function ModulosCarousel() {
                   onClick={() => setActive(index)}
                   className={`absolute left-1/2 top-1/2 flex h-[400px] w-[82vw] max-w-[360px] -translate-x-1/2 -translate-y-1/2 flex-col items-center overflow-hidden rounded-[2rem] border-[1.5px] border-[#E63946] bg-white p-8 text-center outline-none md:h-[460px] md:max-w-[430px] md:p-10 ${
                     isCurrent
-                      ? "shadow-[0_30px_60px_-15px_rgba(230,57,70,0.15)] before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-[#E63946]"
-                      : "shadow-[0_20px_55px_-42px_rgba(17,17,17,0.42)]"
+                      ? "shadow-[0_35px_70px_-20px_rgba(230,57,70,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-[#E63946]"
+                      : "shadow-[0_25px_50px_-20px_rgba(17,17,17,0.55)]"
                   }`}
                   style={{ transformStyle: "preserve-3d" }}
                   aria-hidden={Math.abs(offset) > 1}
