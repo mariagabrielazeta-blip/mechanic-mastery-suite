@@ -294,7 +294,7 @@ export default function ModulosCarousel() {
                   animate={animation}
                   transition={{ duration: 0.55, ease: [0.22, 0.9, 0.32, 1] }}
                   onClick={() => setActive(index)}
-                  className={`absolute left-1/2 top-1/2 flex h-[400px] w-[82vw] max-w-[360px] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-[2rem] border-[1.5px] border-[#E63946] bg-white p-8 text-left outline-none md:h-[460px] md:max-w-[430px] md:p-10 ${
+                  className={`absolute left-1/2 top-1/2 flex h-[400px] w-[82vw] max-w-[360px] -translate-x-1/2 -translate-y-1/2 flex-col items-center overflow-hidden rounded-[2rem] border-[1.5px] border-[#E63946] bg-white p-8 text-center outline-none md:h-[460px] md:max-w-[430px] md:p-10 ${
                     isCurrent
                       ? "shadow-[0_30px_60px_-15px_rgba(230,57,70,0.15)] before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-[#E63946]"
                       : "shadow-[0_20px_55px_-42px_rgba(17,17,17,0.42)]"
@@ -314,7 +314,15 @@ export default function ModulosCarousel() {
                   <div className="grid h-16 w-16 place-items-center rounded-full bg-[#E63946] text-white shadow-[0_18px_35px_-22px_rgba(230,57,70,0.9)] md:h-18 md:w-18">
                     <Icon className="h-8 w-8 md:h-9 md:w-9" strokeWidth={2.5} />
                   </div>
-                  <div className="mt-5 flex flex-wrap gap-1.5">
+                  <div className="mt-5 flex-1 overflow-hidden">
+                    <h3 className="text-2xl font-bold uppercase leading-tight text-black md:text-3xl">
+                      {module.name}
+                    </h3>
+                    <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-gray-500 md:text-base">
+                      {module.desc}
+                    </p>
+                  </div>
+                  <div className="mt-5 flex flex-wrap justify-center gap-1.5">
                     {module.chips.map((chip) => (
                       <span
                         key={chip}
@@ -323,14 +331,6 @@ export default function ModulosCarousel() {
                         {chip}
                       </span>
                     ))}
-                  </div>
-                  <div className="mt-5 flex-1 overflow-hidden">
-                    <h3 className="text-2xl font-bold uppercase leading-tight text-black md:text-3xl">
-                      {module.name}
-                    </h3>
-                    <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-gray-500 md:text-base">
-                      {module.desc}
-                    </p>
                   </div>
                   <div className="mt-4 h-1 w-6 rounded-full bg-[#E63946]" />
                   {isCurrent && <span className="sr-only">Módulo ativo: {activeModule.name}</span>}
