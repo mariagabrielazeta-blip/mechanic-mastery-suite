@@ -349,14 +349,8 @@ export default function ModulosCarousel() {
                       style={{ backgroundColor: category.color }}
                     />
                   )}
-                  <span
-                    className="text-[10px] font-bold uppercase tracking-[0.2em]"
-                    style={{ color: category.color }}
-                  >
-                    {category.label}
-                  </span>
                   <div
-                    className="mt-3 grid h-16 w-16 place-items-center rounded-full text-white shadow-[0_18px_35px_-22px_rgba(0,0,0,0.55)] md:h-18 md:w-18"
+                    className="grid h-16 w-16 place-items-center rounded-full text-white shadow-[0_18px_35px_-22px_rgba(0,0,0,0.55)] md:h-18 md:w-18"
                     style={{ backgroundColor: category.color }}
                   >
                     <Icon className="h-8 w-8 md:h-9 md:w-9" strokeWidth={2.5} />
