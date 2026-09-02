@@ -58,7 +58,7 @@ const WHATSAPP_URL =
   "https://wa.me/5551984277489?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20sobre%20o%20Super%20Fast.";
 const INSTAGRAM_URL = "https://www.instagram.com/zsuperfast/";
 // Placeholders — substituir pelos links oficiais das redes sociais
-const YOUTUBE_URL = "#";
+const YOUTUBE_URL = "https://www.youtube.com/@ZSFast";
 const FACEBOOK_URL = "https://www.facebook.com/zsuperfast";
 const LINKEDIN_URL = "#";
 
