@@ -9,6 +9,7 @@ import {
   Factory,
   FileSearch,
   FileText,
+  Handshake,
   LayoutDashboard,
   ListChecks,
   Package,
@@ -163,6 +164,13 @@ const modules: ModuleItem[] = [
     icon: Calendar,
     chips: ["Reserva Simplificada", "Alertas e Lembretes", "Planejamento"],
     category: "atendimento",
+  },
+  {
+    name: "CRM",
+    desc: "Centraliza e organiza todo o histórico de interações com os clientes e potenciais compradores (leads). Ele integra o setor comercial ao restante da empresa, ajudando a equipe a vender mais, fechar negócios mais rápido e fidelizar clientes.",
+    icon: Handshake,
+    chips: ["Funil de vendas visual", "Gestão de leads e conversões", "Aumento de vendas"],
+    category: "operacao",
   },
   {
     name: "Painéis e Gestão Visual",
