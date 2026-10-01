@@ -30,7 +30,8 @@ const pt = {
   },
   hero: {
     kicker: "Sistema para empresas automotivas",
-    title: "Inteligência que coloca sua operação em alta performance.",
+    title: "Inteligência que coloca sua operação em",
+    titleHighlight: "alta performance.",
     text: "Um sistema desenvolvido para empresas automotivas que buscam controle absoluto, decisões rápidas e crescimento sustentável.",
     cta: "Conhecer plataforma",
   },
@@ -84,7 +85,7 @@ const pt = {
   },
   carousel: {
     kicker: "Gestão Inteligente",
-    title: "Tudo o que sua oficina precisa. Em um único sistema.",
+    title: "Tudo o que sua oficina precisa em um único sistema.",
     text: "Do primeiro atendimento à entrega do veículo, do atendimento ao pós venda, conectamos pessoas, processos e informações para sua operação funcionar de forma organizada e previsível.",
     region: "Carrossel de módulos do sistema",
     prev: "Módulo anterior",
@@ -301,7 +302,8 @@ const es: Dict = {
   },
   hero: {
     kicker: "Sistema para empresas automotrices",
-    title: "Inteligencia que pone su operación en alto rendimiento.",
+    title: "Inteligencia que pone su operación en",
+    titleHighlight: "alto rendimiento.",
     text: "Un sistema desarrollado para empresas automotrices que buscan control absoluto, decisiones rápidas y crecimiento sostenible.",
     cta: "Conocer la plataforma",
   },
@@ -355,7 +357,7 @@ const es: Dict = {
   },
   carousel: {
     kicker: "Gestión Inteligente",
-    title: "Todo lo que su taller necesita. En un único sistema.",
+    title: "Todo lo que su taller necesita en un único sistema.",
     text: "Desde la primera atención hasta la entrega del vehículo, de la atención a la posventa, conectamos personas, procesos e información para que su operación funcione de forma organizada y previsible.",
     region: "Carrusel de módulos del sistema",
     prev: "Módulo anterior",
@@ -570,7 +572,8 @@ const en: Dict = {
   },
   hero: {
     kicker: "Software for automotive businesses",
-    title: "Intelligence that puts your operation at peak performance.",
+    title: "Intelligence that puts your operation at",
+    titleHighlight: "peak performance.",
     text: "A system built for automotive businesses that want absolute control, fast decisions and sustainable growth.",
     cta: "Explore the platform",
   },
@@ -624,7 +627,7 @@ const en: Dict = {
   },
   carousel: {
     kicker: "Smart Management",
-    title: "Everything your shop needs. In a single system.",
+    title: "Everything your shop needs in a single system.",
     text: "From the first customer contact to vehicle delivery, from service to after-sales, we connect people, processes and information so your operation runs in an organized and predictable way.",
     region: "System modules carousel",
     prev: "Previous module",

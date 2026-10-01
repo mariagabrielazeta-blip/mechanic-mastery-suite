@@ -484,26 +484,26 @@ function Home() {
       <header className="absolute inset-x-0 top-0 z-50">
         <div className="container-x flex h-20 items-center justify-between">
           <Logo tone="header" />
-          <nav className="hidden lg:flex items-center gap-9">
+          <nav className="hidden xl:flex items-center gap-9">
             {NAV.map((n) => (
               <a
                 key={n.key}
                 href={n.href}
                 target={n.external ? "_blank" : undefined}
                 rel={n.external ? "noreferrer" : undefined}
-                className="text-sm font-medium text-white/85 hover:text-white transition-colors"
+                className="whitespace-nowrap text-sm font-medium text-white/85 hover:text-white transition-colors"
               >
                 {t.nav[n.key]}
               </a>
             ))}
           </nav>
-          <div className="hidden items-center gap-5 lg:flex">
+          <div className="hidden items-center gap-5 xl:flex">
             <LanguageSwitcher />
             <CtaButton variant="primary" href={WHATSAPP_URL} target="_blank">
               {t.header.specialist}
             </CtaButton>
           </div>
-          <div className="flex items-center gap-1 lg:hidden">
+          <div className="flex items-center gap-1 xl:hidden">
             <LanguageSwitcher />
             <button
               aria-label={open ? t.header.closeMenu : t.header.openMenu}
@@ -519,7 +519,7 @@ function Home() {
         {open && (
           <div
             id="mobile-menu"
-            className="lg:hidden bg-ink/95 backdrop-blur border-t border-white/10"
+            className="xl:hidden bg-ink/95 backdrop-blur border-t border-white/10"
           >
             <div className="container-x py-6 flex flex-col gap-4">
               {NAV.map((n) => (
@@ -563,7 +563,8 @@ function Home() {
           <div className="max-w-xl rounded-[2rem] border border-white/18 bg-black/22 p-6 text-left text-white shadow-[0_28px_90px_-45px_rgba(0,0,0,0.95)] backdrop-blur-xl md:p-8 lg:p-10">
             <span className="eyebrow mb-5 block text-white/80">{t.hero.kicker}</span>
             <h1 className="text-4xl text-white md:text-6xl lg:text-7xl [text-shadow:0_4px_16px_rgba(0,0,0,0.45)]">
-              {t.hero.title}
+              {t.hero.title}{" "}
+              <span className="text-[#D40000]">{t.hero.titleHighlight}</span>
             </h1>
             <p className="mt-6 max-w-lg text-sm leading-relaxed text-white/78 md:text-base">
               {t.hero.text}
