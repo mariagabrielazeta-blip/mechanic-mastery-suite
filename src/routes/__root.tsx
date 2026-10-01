@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieConsentBanner } from "../components/CookieConsentBanner";
+import { I18nProvider } from "../i18n";
 
 const SITE_URL = "https://mechanic-mastery-suite.vercel.app/";
 
@@ -148,9 +149,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-      <CookieConsentBanner />
+      <I18nProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+        <CookieConsentBanner />
+      </I18nProvider>
     </QueryClientProvider>
   );
 }

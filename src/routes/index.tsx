@@ -30,6 +30,7 @@ import { CtaButton } from "@/components/CtaButton";
 import ModulosCarousel from "@/components/ModulosCarousel";
 import { DemoForm, ImplementationVisualSection } from "@/components/SuperFastRedesignSections";
 import { UniversoSuperfastSection } from "@/components/UniversoSuperfastSection";
+import { LanguageSwitcher, useI18n, whatsappUrl } from "@/i18n";
 
 const SITE_URL = "https://mechanic-mastery-suite.vercel.app/";
 
@@ -46,16 +47,17 @@ export const Route = createFileRoute("/")({
 
 const LOGIN_URL = "https://erp.sfast.com.br";
 
-const NAV = [
-  { label: "Gestão Inteligente", href: "#capacidade" },
-  { label: "Depoimentos", href: "#depoimentos" },
-  { label: "Implantação", href: "#implantacao" },
-  { label: "Demonstração", href: "#contato" },
-  { label: "Login SF", href: LOGIN_URL, external: true },
+const NAV: {
+  key: "capacity" | "testimonials" | "implementation" | "demo" | "login";
+  href: string;
+  external?: boolean;
+}[] = [
+  { key: "capacity", href: "#capacidade" },
+  { key: "testimonials", href: "#depoimentos" },
+  { key: "implementation", href: "#implantacao" },
+  { key: "demo", href: "#contato" },
+  { key: "login", href: LOGIN_URL, external: true },
 ];
-
-const WHATSAPP_URL =
-  "https://wa.me/5551984277489?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20sobre%20o%20Super%20Fast.";
 const INSTAGRAM_URL = "https://www.instagram.com/zsuperfast/";
 const YOUTUBE_URL = "https://www.youtube.com/@ZSFast";
 const FACEBOOK_URL = "https://www.facebook.com/zsuperfast";
@@ -154,12 +156,13 @@ function Logo({
 
 
 function FloatingWhatsAppButton() {
+  const { t } = useI18n();
   return (
     <a
-      href={WHATSAPP_URL}
+      href={whatsappUrl(t)}
       target="_blank"
       rel="noreferrer"
-      aria-label="Falar com um especialista pelo WhatsApp"
+      aria-label={t.floating.aria}
       className="group fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full border border-[#25D366]/40 bg-[#25D366] text-white shadow-[0_14px_35px_rgba(37,211,102,0.32)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#1fb457] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25D366] md:bottom-7 md:right-7 md:h-15 md:w-15"
     >
       <svg
@@ -170,7 +173,7 @@ function FloatingWhatsAppButton() {
         <path d="M16.02 3.2A12.7 12.7 0 0 0 5.04 22.3L3.2 29l6.86-1.8a12.66 12.66 0 0 0 5.95 1.52h.01A12.76 12.76 0 0 0 28.8 16 12.78 12.78 0 0 0 16.02 3.2Zm0 23.36h-.01a10.52 10.52 0 0 1-5.36-1.47l-.38-.23-4.07 1.07 1.08-3.96-.25-.4a10.54 10.54 0 1 1 8.99 4.99Zm5.78-7.9c-.31-.16-1.86-.92-2.15-1.03-.29-.1-.5-.16-.71.16-.21.31-.82 1.03-1 1.24-.18.21-.37.24-.68.08-.31-.16-1.33-.49-2.53-1.56-.94-.84-1.57-1.87-1.75-2.18-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.61-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.63 0 1.55 1.13 3.05 1.29 3.26.16.21 2.23 3.4 5.4 4.77.75.32 1.34.52 1.8.66.76.24 1.45.21 1.99.13.61-.09 1.86-.76 2.13-1.5.26-.73.26-1.36.18-1.5-.08-.13-.29-.21-.61-.37Z" />
       </svg>
       <span className="pointer-events-none absolute right-[calc(100%+0.75rem)] hidden whitespace-nowrap rounded-full border border-white/10 bg-black/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/85 opacity-0 shadow-xl transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 md:block md:translate-x-2">
-        Fale com um especialista
+        {t.floating.tooltip}
       </span>
     </a>
   );
@@ -235,26 +238,17 @@ const TESTIMONIALS = [
   {
     image: gersonImg,
     name: "Gerson",
-    company: "Oficina Fleschcar",
     objectPosition: "center 15%",
-    quote:
-      "Aprendemos que é uma construção conjunta, pois, o melhor sistema de gestão, não funciona sozinho, sem a participação do dono da oficina. A SFAST, sempre trouxe inovação para o negócio, organizou os processos, amarrando as etapas do trabalho, onde cada profissional participa, contribuindo para que, através dos indicadores fornecidos pelo sistema, os resultados sejam alcançados.",
   },
   {
     image: marceloPepeImg,
     name: "Marcelo Pepe",
-    company: "Oficina PEPE",
     objectPosition: "center 15%",
-    quote:
-      "É um software de gestão indispensável para o dia a dia do negócio. Integração, confiança da informação e fácil utilização. Mas mais do que isso, não se trata apenas de um sistema de gestão, pois a equipe de retaguarda está sempre pronta para atender eventuais dúvidas e ajudar o que for necessário para melhorarmos juntos.",
   },
   {
     image: wesleyImg,
     name: "Wesley",
-    company: "Oficina Sapão",
     objectPosition: "center 10%",
-    quote:
-      "Já conhecíamos o sistema Sfast há alguns anos por amigos que sempre elogiavam, mas achávamos que não era prioritário para nossa empresa. Depois de conhecer o Rui pessoalmente e conversamos sobre gestão de oficinas, sentimos a expertise da Sfast e resolvemos arriscar. Hoje, após três anos, não conseguimos enxergar nossa oficina operando sem o sistema. Posso afirmar que mais do que clientes, viramos amigos e claro, fãs!",
   },
 ];
 
@@ -270,6 +264,7 @@ function SectionKicker({ children }: { children: React.ReactNode }) {
 
 function TestimonialVideoBlock() {
   const [open, setOpen] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     if (!open) return;
@@ -287,7 +282,7 @@ function TestimonialVideoBlock() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Assistir vídeo de depoimentos Super Fast"
+        aria-label={t.testimonials.videoWatch}
         className="group relative mb-10 block aspect-video w-full overflow-hidden rounded-[34px] border border-black/5 bg-ink shadow-[0_30px_90px_-62px_rgba(17,17,17,0.85)]"
       >
         <video
@@ -305,7 +300,7 @@ function TestimonialVideoBlock() {
         </div>
         <div className="absolute inset-x-0 bottom-0 p-5 text-left text-white md:p-8">
           <div className="eyebrow text-primary">Super Fast</div>
-          <div className="mt-2 font-display text-xl leading-[1.1] md:text-3xl">Oficinas que confiam no Super Fast</div>
+          <div className="mt-2 font-display text-xl leading-[1.1] md:text-3xl">{t.testimonials.videoTitle}</div>
         </div>
       </button>
 
@@ -314,14 +309,14 @@ function TestimonialVideoBlock() {
           className="fixed inset-0 z-[10000] grid place-items-center bg-black/90 p-4 backdrop-blur-md"
           role="dialog"
           aria-modal="true"
-          aria-label="Vídeo de depoimentos Super Fast"
+          aria-label={t.testimonials.videoDialog}
           onMouseDown={(event) => event.target === event.currentTarget && setOpen(false)}
         >
           <div className="relative w-full max-w-4xl">
             <button
               type="button"
               onClick={() => setOpen(false)}
-              aria-label="Fechar vídeo"
+              aria-label={t.testimonials.videoClose}
               className="absolute -top-12 right-0 grid h-10 w-10 place-items-center rounded-full border border-white/20 text-white/80 hover:border-primary hover:text-primary"
             >
               <X className="h-5 w-5" />
@@ -341,14 +336,15 @@ function TestimonialVideoBlock() {
 }
 
 function ProofSection() {
+  const { t } = useI18n();
   const trackRef = useRef<HTMLDivElement>(null);
   const dragState = useRef({ dragging: false, startX: 0, startScroll: 0, moved: false });
+  const [openCard, setOpenCard] = useState<number | null>(null);
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     const el = trackRef.current;
     if (!el) return;
     dragState.current = { dragging: true, startX: event.clientX, startScroll: el.scrollLeft, moved: false };
-    el.setPointerCapture(event.pointerId);
   };
 
   const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -356,8 +352,12 @@ function ProofSection() {
     const state = dragState.current;
     if (!el || !state.dragging) return;
     const delta = event.clientX - state.startX;
-    if (Math.abs(delta) > 3) state.moved = true;
-    el.scrollLeft = state.startScroll - delta;
+    if (!state.moved && Math.abs(delta) > 3) {
+      state.moved = true;
+      // Capture only once a real drag starts, so plain taps still reach the card's onClick.
+      el.setPointerCapture(event.pointerId);
+    }
+    if (state.moved) el.scrollLeft = state.startScroll - delta;
   };
 
   const endDrag = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -371,10 +371,10 @@ function ProofSection() {
       <div className="container-x mx-auto max-w-[1240px] overflow-hidden">
         <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
-            <SectionKicker>Depoimentos</SectionKicker>
-            <h2 className="max-w-3xl text-4xl md:text-6xl">Oficinas de reparação automotiva que já sentem a diferença.</h2>
+            <SectionKicker>{t.testimonials.kicker}</SectionKicker>
+            <h2 className="max-w-3xl text-3xl sm:text-4xl md:text-6xl">{t.testimonials.title}</h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-ink-soft">Depoimentos reais de oficinas que trocaram planilhas e retrabalho por um ERP feito para o dia a dia da oficina.</p>
+          <p className="max-w-sm text-sm leading-relaxed text-ink-soft">{t.testimonials.intro}</p>
         </div>
         <TestimonialVideoBlock />
         <div
@@ -382,6 +382,7 @@ function ProofSection() {
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={endDrag}
+          onPointerCancel={endDrag}
           onPointerLeave={endDrag}
           className="-mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:-mx-8 md:gap-6 md:px-8 [&::-webkit-scrollbar]:hidden cursor-grab active:cursor-grabbing"
         >
@@ -392,6 +393,11 @@ function ProofSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: index * 0.08 }}
+              onClick={() => {
+                if (dragState.current.moved) return;
+                setOpenCard((current) => (current === index ? null : index));
+              }}
+              data-open={openCard === index}
               className="group relative h-[430px] min-w-[78vw] snap-center overflow-hidden rounded-[34px] border border-black/5 bg-ink shadow-[0_30px_90px_-62px_rgba(17,17,17,0.85)] sm:min-w-[360px] lg:min-w-[390px]"
             >
               <img
@@ -406,9 +412,9 @@ function ProofSection() {
                 <div className="rounded-[26px] border border-white/14 bg-white/10 p-5 shadow-[0_20px_55px_-35px_rgba(0,0,0,0.9)] backdrop-blur-xl transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-white/14">
                   <div className="eyebrow text-primary">Super Fast</div>
                   <div className="mt-3 font-display text-4xl leading-none">{item.name}</div>
-                  <div className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/62">{item.company}</div>
-                  <p className="mt-5 max-h-0 overflow-hidden text-sm leading-relaxed text-white/82 opacity-0 transition-all duration-500 group-hover:max-h-64 group-hover:opacity-100">
-                    “{item.quote}”
+                  <div className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/62">{t.testimonials.items[index].company}</div>
+                  <p className="mt-5 max-h-0 overflow-hidden text-sm leading-relaxed text-white/82 opacity-0 transition-all duration-500 group-hover:max-h-64 group-hover:opacity-100 group-data-[open=true]:max-h-64 group-data-[open=true]:opacity-100">
+                    “{t.testimonials.items[index].quote}”
                   </p>
                 </div>
               </div>
@@ -416,12 +422,13 @@ function ProofSection() {
           ))}
         </div>
         <div className="mt-5 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.16em] text-ink-soft">
-          <span>Arraste para ver mais</span>
-          <span>Passe o mouse para ler</span>
+          <span>{t.testimonials.drag}</span>
+          <span className="hidden md:inline">{t.testimonials.hover}</span>
+          <span className="md:hidden">{t.testimonials.tap}</span>
         </div>
         <div className="mt-10 flex justify-center">
           <CtaButton variant="primary" href="#contato">
-            Quero os mesmos resultados
+            {t.testimonials.cta}
           </CtaButton>
         </div>
       </div>
@@ -430,24 +437,25 @@ function ProofSection() {
 }
 
 function ConversionDemoSection() {
-  const benefits = ["Demonstração personalizada para a rotina da sua oficina", "Diagnóstico dos gargalos que travam sua operação", "Plano de implantação claro, sem enrolação"];
+  const { t } = useI18n();
+  const benefits = t.conversion.benefits;
   return (
     <section id="contato" className="bg-[#111318] py-24 text-white md:py-32">
       <div className="container-x mx-auto grid max-w-[1200px] gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
-          <SectionKicker>Demonstração gratuita</SectionKicker>
-          <h2 className="mt-2 mb-2 text-5xl md:text-7xl">Veja seu novo sistema na prática.</h2>
-          <p className="mt-9 max-w-lg text-base leading-relaxed text-white/65">Agende uma demonstração gratuita e veja como o Super Fast conecta atendimento, ordens de serviço, estoque e financeiro em um único sistema de gestão para oficinas.</p>
+          <SectionKicker>{t.conversion.kicker}</SectionKicker>
+          <h2 className="mt-2 mb-2 text-4xl sm:text-5xl md:text-7xl">{t.conversion.title}</h2>
+          <p className="mt-9 max-w-lg text-base leading-relaxed text-white/65">{t.conversion.text}</p>
           <div className="mt-10 grid gap-4">
             {benefits.map((item) => (
               <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm font-semibold text-white/80">
-                <CheckCircle2 className="h-5 w-5 text-primary" /> {item}
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" /> {item}
               </div>
             ))}
           </div>
           <div className="mt-8 flex justify-center">
-            <CtaButton variant="ghost" href={WHATSAPP_URL} target="_blank">
-              Prefiro falar agora no WhatsApp
+            <CtaButton variant="ghost" href={whatsappUrl(t)} target="_blank">
+              {t.conversion.whatsapp}
             </CtaButton>
           </div>
         </div>
@@ -461,6 +469,12 @@ function ConversionDemoSection() {
 
 function Home() {
   const [open, setOpen] = useState(false);
+  const { t } = useI18n();
+  const WHATSAPP_URL = whatsappUrl(t);
+
+  useEffect(() => {
+    document.title = t.meta.title;
+  }, [t]);
 
   return (
     <div id="top" className="bg-white text-ink">
@@ -473,30 +487,34 @@ function Home() {
           <nav className="hidden lg:flex items-center gap-9">
             {NAV.map((n) => (
               <a
-                key={n.label}
+                key={n.key}
                 href={n.href}
                 target={n.external ? "_blank" : undefined}
                 rel={n.external ? "noreferrer" : undefined}
                 className="text-sm font-medium text-white/85 hover:text-white transition-colors"
               >
-                {n.label}
+                {t.nav[n.key]}
               </a>
             ))}
           </nav>
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-5 lg:flex">
+            <LanguageSwitcher />
             <CtaButton variant="primary" href={WHATSAPP_URL} target="_blank">
-              Fale com um especialista
+              {t.header.specialist}
             </CtaButton>
           </div>
-          <button
-            aria-label={open ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            className="lg:hidden text-white p-2"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="flex items-center gap-1 lg:hidden">
+            <LanguageSwitcher />
+            <button
+              aria-label={open ? t.header.closeMenu : t.header.openMenu}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              className="p-2 text-white"
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
         {open && (
           <div
@@ -506,14 +524,14 @@ function Home() {
             <div className="container-x py-6 flex flex-col gap-4">
               {NAV.map((n) => (
                 <a
-                  key={n.label}
+                  key={n.key}
                   href={n.href}
                   target={n.external ? "_blank" : undefined}
                   rel={n.external ? "noreferrer" : undefined}
                   onClick={() => setOpen(false)}
                   className="text-white/90 text-base"
                 >
-                  {n.label}
+                  {t.nav[n.key]}
                 </a>
               ))}
               <CtaButton
@@ -522,7 +540,7 @@ function Home() {
                 href={WHATSAPP_URL}
                 target="_blank"
               >
-                Fale com um especialista
+                {t.header.specialist}
               </CtaButton>
             </div>
           </div>
@@ -543,21 +561,21 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/40" />
         <div className="container-x relative flex h-full items-end justify-start pb-32 md:pb-36">
           <div className="max-w-xl rounded-[2rem] border border-white/18 bg-black/22 p-6 text-left text-white shadow-[0_28px_90px_-45px_rgba(0,0,0,0.95)] backdrop-blur-xl md:p-8 lg:p-10">
-            <span className="eyebrow mb-5 block text-white/80">Sistema para empresas automotivas</span>
+            <span className="eyebrow mb-5 block text-white/80">{t.hero.kicker}</span>
             <h1 className="text-4xl text-white md:text-6xl lg:text-7xl [text-shadow:0_4px_16px_rgba(0,0,0,0.45)]">
-              Inteligência que coloca sua operação em alta performance.
+              {t.hero.title}
             </h1>
             <p className="mt-6 max-w-lg text-sm leading-relaxed text-white/78 md:text-base">
-              Um sistema desenvolvido para empresas automotivas que buscam controle absoluto, decisões rápidas e crescimento sustentável.
+              {t.hero.text}
             </p>
           </div>
         </div>
         <a
           href="#capacidade"
-          aria-label="Conhecer plataforma"
-          className="group absolute bottom-8 left-1/2 z-10 inline-flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/22 bg-white/10 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-[0_18px_45px_-28px_rgba(0,0,0,0.9)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/45 hover:bg-white/18 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70 md:bottom-10 md:px-6 md:py-3.5 md:text-sm"
+          aria-label={t.hero.cta}
+          className="group absolute bottom-8 left-1/2 z-10 inline-flex -translate-x-1/2 items-center gap-3 whitespace-nowrap rounded-full border border-white/22 bg-white/10 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-[0_18px_45px_-28px_rgba(0,0,0,0.9)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/45 hover:bg-white/18 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70 md:bottom-10 md:px-6 md:py-3.5 md:text-sm"
         >
-          Conhecer plataforma
+          {t.hero.cta}
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </a>
       </section>
@@ -571,15 +589,15 @@ function Home() {
       <ConversionDemoSection />
 
       {/* Footer */}
-      <footer className="border-t border-black/5 bg-[#2A2A2A] text-white/80">
+      <footer className="border-t border-black/5 bg-[#2A2A2A] pb-16 text-white/80 lg:pb-0">
         <div className="container-x mx-auto flex max-w-[1240px] flex-col gap-8 py-10 lg:flex-row lg:flex-wrap lg:items-center lg:justify-between lg:gap-x-6 lg:gap-y-4">
           <Logo tone="header" />
           <div className="flex flex-col items-center gap-4 md:items-start">
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm md:justify-start">
               <a href="mailto:contato@sfast.com.br" className="hover:text-white">contato@sfast.com.br</a>
               <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-white">WhatsApp</a>
-              <span>Porto Alegre/RS</span>
-              <Link to="/politica-de-privacidade" className="hover:text-white">Política de Privacidade</Link>
+              <span>{t.footer.city}</span>
+              <Link to="/politica-de-privacidade" className="hover:text-white">{t.footer.privacy}</Link>
             </div>
             <div className="flex shrink-0 items-center gap-3">
               <a
@@ -622,13 +640,13 @@ function Home() {
           </div>
           <div className="flex w-full justify-center lg:w-auto lg:shrink-0">
             <CtaButton variant="outline" href={WHATSAPP_URL} target="_blank" className="!px-5 !py-2.5 !border-white !text-white hover:!bg-white hover:!text-primary whitespace-nowrap">
-              Comece hoje mesmo
+              {t.footer.startNow}
             </CtaButton>
           </div>
           <div className="shrink-0 text-center text-xs lg:text-right">
             <div className="whitespace-nowrap">© {new Date().getFullYear()} Super Fast</div>
             <div className="mt-1 whitespace-nowrap text-white/50">
-              Desenvolvido pela{" "}
+              {t.footer.developedBy}{" "}
               <a href="https://conexaoz.com.br/" target="_blank" rel="noreferrer" className="hover:text-white">
                 Conexão Z
               </a>
