@@ -26,14 +26,12 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 import { CtaButton } from "@/components/CtaButton";
+import { useI18n } from "@/i18n";
 
 type CategoryId = "atendimento" | "estoque" | "operacao" | "financeiro" | "gestao";
 
 type ModuleItem = {
-  name: string;
-  desc: string;
   icon: LucideIcon;
-  chips: [string, string, string];
   category: CategoryId;
 };
 
@@ -46,139 +44,25 @@ const CATEGORIES: Record<CategoryId, { label: string; color: string; soft: strin
 };
 
 const modules: ModuleItem[] = [
-  {
-    name: "Clientes",
-    desc: "Cadastro completo, diversos endereços e contatos, armazenamento e gestão de documentos, classificação de clientes, histórico unificado, controle de crédito, integração com outros setores e módulos.",
-    icon: Users,
-    chips: ["Agilidade no Atendimento", "Visão 360 Graus", "Segurança de Dados"],
-    category: "atendimento",
-  },
-  {
-    name: "Veículos",
-    desc: "Registro de placa com identificação automática, RENAVAM, chassi, marca, modelo, ano, quilometragem e combustível, controle de documentos, vinculação ao proprietário, histórico de manutenção, dados de frota e técnicos e imagens.",
-    icon: Car,
-    chips: ["Facilidade de Cadastro", "Dados Corretos para Compras de Peças", "Organização Total"],
-    category: "atendimento",
-  },
-  {
-    name: "Produto/Peças",
-    desc: "Dados cadastrais completos e especializados, dados fiscais, diversos códigos de identificação, modelos de veículos de aplicação, código de barras, grupos e categoria, imagens e anexos, e controle de preços, margens e reajustes.",
-    icon: Package,
-    chips: ["Agilidade de Pesquisa", "Precisão Tributária e Estoque", "Visão Completa"],
-    category: "estoque",
-  },
-  {
-    name: "Serviços",
-    desc: "Catálogo de serviços prestados, dados fiscais, tempário, valores por hora e/ou serviço, limites de descontos, e serviços de terceiros.",
-    icon: Wrench,
-    chips: ["Agilidade no Faturamento", "Organização das Vendas", "Padronização de Tempos e Custos"],
-    category: "operacao",
-  },
-  {
-    name: "Cotação de Compras",
-    desc: "Geração automática de requisições de compra, envio para fornecedores, comparativo inteligente, histórico de preços, controle de aprovação.",
-    icon: FileSearch,
-    chips: ["Redução de Custos", "Agilidade de Compra", "Transparência e Controle"],
-    category: "estoque",
-  },
-  {
-    name: "Compras",
-    desc: "Cadastro de fornecedores, solicitação de compra, cotação, comparação e ordem de compra, aprovação por níveis, identificação e importação automática de notas.",
-    icon: ShoppingCart,
-    chips: ["Controle Total", "Redução de Erros", "Conformidade Fiscal"],
-    category: "estoque",
-  },
-  {
-    name: "Estoque",
-    desc: "Entrada e saída, localização, histórico de movimentações, inventário, curva ABC.",
-    icon: Boxes,
-    chips: ["Redução de Rupturas", "Diminui Mercadorias Paradas", "Relatórios Precisos"],
-    category: "estoque",
-  },
-  {
-    name: "Orçamentação",
-    desc: "Criação rápida de orçamentos, importação de orçamentos, versões de orçamentos, funil de vendas, aprovação de orçamentos, envios e mensageria automática.",
-    icon: FileText,
-    chips: ["Controle de status", "Menor Tempo de Aprovação", "Repescagem"],
-    category: "operacao",
-  },
-  {
-    name: "Ordens de Serviço",
-    desc: "Acompanhamento dos serviços, painel oficina inteligente, controle de peças e serviços, apontamento de horas, histórico completo, venda agregada.",
-    icon: ClipboardList,
-    chips: ["Redução de Custos", "Gestão a Vista", "Menos Tempo Parado"],
-    category: "operacao",
-  },
-  {
-    name: "Pedidos de Venda",
-    desc: "Registro rápido de produtos, quantidades, preços e condições de pagamento, consulta de estoque, aprovação de crédito, integração fiscal e faturamento e rastreabilidade do status do pedido.",
-    icon: ShoppingBag,
-    chips: ["Agilidade de digitação", "Controle Gerencial", "Maior Faturamento"],
-    category: "operacao",
-  },
-  {
-    name: "Controle de Produção",
-    desc: "Visão em tempo real de cada OS, alocação de recursos e distribuição de serviços com IA, apontamento, gestão de insumos, indicadores de desempenho, eficiência, custo de mão de obra.",
-    icon: Factory,
-    chips: ["Redução de Prazos", "Controle de Custos", "Organização"],
-    category: "operacao",
-  },
-  {
-    name: "Gestão Financeira",
-    desc: "Pagar e receber, fluxo de caixa, controle de vencimentos, previsões e projeções, conciliação bancária integrada, DRE, relatórios e gráficos gerenciais.",
-    icon: Wallet,
-    chips: ["Menos Trabalho", "Segurança", "Visão Completa"],
-    category: "financeiro",
-  },
-  {
-    name: "Faturamento e NFs",
-    desc: "NF-e, NFS-e e NFC-e, regras de negócio, envio automatizado, cancelamento e carta de correção, e painel de monitoramento.",
-    icon: Receipt,
-    chips: ["Automação e Agilidade Total", "Zero Erros", "Maior Segurança Fiscal"],
-    category: "financeiro",
-  },
-  {
-    name: "Mobile",
-    desc: "Atendimento e vendas externas, controle de produção, gestão de estoque, ordens de serviço e aprovações rápidas.",
-    icon: Smartphone,
-    chips: ["Agilidade", "Mobilidade", "Conforto"],
-    category: "atendimento",
-  },
-  {
-    name: "Manutenção Preventiva",
-    desc: "Cronograma de manutenções automático, controle de insumos, planos personalizados, alertas e notificações, predição e prevenção, e fidelização do cliente.",
-    icon: ShieldCheck,
-    chips: ["Segurança e Conforto do Cliente", "Faturamento Constante", "Fidelização"],
-    category: "operacao",
-  },
-  {
-    name: "Check List",
-    desc: "Digitaliza e agiliza a inspeção veicular, elimina o uso de papel, padroniza as vistorias e identifica falhas, formulários personalizados, acesso mobile, fotos e vídeos e assinatura digital.",
-    icon: ListChecks,
-    chips: ["Agilidade", "Segurança da Operação", "Zero Papel"],
-    category: "operacao",
-  },
-  {
-    name: "Agendamento",
-    desc: "Centraliza e organiza o atendimento, elimina conflitos de reservas, otimiza a produção, visão em tempo real das disponibilidades, e lembretes automáticos.",
-    icon: Calendar,
-    chips: ["Reserva Simplificada", "Alertas e Lembretes", "Planejamento"],
-    category: "atendimento",
-  },
-  {
-    name: "CRM",
-    desc: "Centraliza e organiza todo o histórico de interações com os clientes e potenciais compradores (leads). Ele integra o setor comercial ao restante da empresa, ajudando a equipe a vender mais, fechar negócios mais rápido e fidelizar clientes.",
-    icon: Handshake,
-    chips: ["Funil de vendas visual", "Gestão de leads e conversões", "Aumento de vendas"],
-    category: "operacao",
-  },
-  {
-    name: "Painéis e Gestão Visual",
-    desc: "Centraliza as informações importantes, indicadores em tempo real, telas personalizáveis, gráficos interativos, acompanhamento de metas, alertas visuais, identificação de gargalos e falhas, e detecção de custos elevados.",
-    icon: LayoutDashboard,
-    chips: ["Decisões Estratégicas", "Economia de Tempo", "Visão 360 Graus"],
-    category: "gestao",
-  },
+  { icon: Users, category: "atendimento" },
+  { icon: Car, category: "atendimento" },
+  { icon: Package, category: "estoque" },
+  { icon: Wrench, category: "operacao" },
+  { icon: FileSearch, category: "estoque" },
+  { icon: ShoppingCart, category: "estoque" },
+  { icon: Boxes, category: "estoque" },
+  { icon: FileText, category: "operacao" },
+  { icon: ClipboardList, category: "operacao" },
+  { icon: ShoppingBag, category: "operacao" },
+  { icon: Factory, category: "operacao" },
+  { icon: Wallet, category: "financeiro" },
+  { icon: Receipt, category: "financeiro" },
+  { icon: Smartphone, category: "atendimento" },
+  { icon: ShieldCheck, category: "operacao" },
+  { icon: ListChecks, category: "operacao" },
+  { icon: Calendar, category: "atendimento" },
+  { icon: Handshake, category: "operacao" },
+  { icon: LayoutDashboard, category: "gestao" },
 ];
 
 const AUTOPLAY_DELAY = 3200;
@@ -242,8 +126,10 @@ function getCardAnimation(offset: number) {
 export default function ModulosCarousel() {
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const { t } = useI18n();
+  const c = t.carousel;
 
-  const activeModule = useMemo(() => modules[active], [active]);
+  const activeModule = useMemo(() => c.modules[active], [active, c.modules]);
 
   useEffect(() => {
     if (isPaused) return;
@@ -272,13 +158,13 @@ export default function ModulosCarousel() {
           className="mx-auto max-w-4xl text-center"
         >
           <span className="text-xs font-bold uppercase tracking-[0.28em] text-[#E63946]">
-            Gestão Inteligente
+            {c.kicker}
           </span>
           <h2 className="mt-8 text-4xl font-bold uppercase leading-[1.1] text-black md:text-6xl lg:text-7xl">
-            Tudo o que sua oficina precisa. Em um único sistema.
+            {c.title}
           </h2>
           <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-gray-500 md:text-base">
-            Do primeiro atendimento à entrega do veículo, do atendimento ao pós venda, conectamos pessoas, processos e informações para sua operação funcionar de forma organizada e previsível.
+            {c.text}
           </p>
         </motion.div>
 
@@ -297,7 +183,7 @@ export default function ModulosCarousel() {
           />
           <button
             type="button"
-            aria-label="Módulo anterior"
+            aria-label={c.prev}
             onClick={goToPrevious}
             className="absolute left-[18%] top-1/2 z-40 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-2xl border-[1.5px] border-[#E63946] bg-white text-[#E63946] shadow-lg transition-all hover:-translate-x-1 hover:bg-[#E63946] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946] md:flex lg:left-[21%]"
           >
@@ -317,18 +203,19 @@ export default function ModulosCarousel() {
               setIsPaused(false);
             }}
             role="region"
-            aria-label="Carrossel de módulos do sistema"
+            aria-label={c.region}
           >
             {modules.map((module, index) => {
               const offset = getCircularOffset(index, active);
               const animation = getCardAnimation(offset);
               const Icon = module.icon;
+              const copy = c.modules[index];
               const isCurrent = active === index;
               const category = CATEGORIES[module.category];
 
               return (
                 <motion.article
-                  key={module.name}
+                  key={copy.name}
                   animate={animation}
                   transition={{ duration: 0.55, ease: [0.22, 0.9, 0.32, 1] }}
                   onClick={() => setActive(index)}
@@ -341,7 +228,7 @@ export default function ModulosCarousel() {
                       : "0 25px 50px -20px rgba(17,17,17,0.55)",
                   }}
                   aria-hidden={Math.abs(offset) > 1}
-                  aria-label={`${module.name}: ${module.desc}`}
+                  aria-label={`${copy.name}: ${copy.desc}`}
                   tabIndex={Math.abs(offset) <= 1 ? 0 : -1}
                   role="button"
                   onKeyDown={(event) => {
@@ -365,14 +252,14 @@ export default function ModulosCarousel() {
                   </div>
                   <div className="mt-5 flex-1 overflow-hidden">
                     <h3 className="text-2xl font-bold uppercase leading-tight text-black md:text-3xl">
-                      {module.name}
+                      {copy.name}
                     </h3>
                     <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-gray-500 md:text-base">
-                      {module.desc}
+                      {copy.desc}
                     </p>
                   </div>
                   <div className="mt-5 flex flex-wrap justify-center gap-1.5">
-                    {module.chips.map((chip) => (
+                    {copy.chips.map((chip) => (
                       <span
                         key={chip}
                         className="rounded-full border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide"
@@ -387,7 +274,7 @@ export default function ModulosCarousel() {
                     ))}
                   </div>
                   <div className="mt-4 h-1 w-6 rounded-full" style={{ backgroundColor: category.color }} />
-                  {isCurrent && <span className="sr-only">Módulo ativo: {activeModule.name}</span>}
+                  {isCurrent && <span className="sr-only">{c.active}: {activeModule.name}</span>}
                 </motion.article>
               );
             })}
@@ -395,7 +282,7 @@ export default function ModulosCarousel() {
 
           <button
             type="button"
-            aria-label="Próximo módulo"
+            aria-label={c.next}
             onClick={goToNext}
             className="absolute right-[18%] top-1/2 z-40 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-2xl border-[1.5px] border-[#E63946] bg-white text-[#E63946] shadow-lg transition-all hover:translate-x-1 hover:bg-[#E63946] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946] md:flex lg:right-[21%]"
           >
@@ -403,12 +290,12 @@ export default function ModulosCarousel() {
           </button>
         </div>
 
-        <div className="mt-3 flex items-center justify-center gap-2" aria-label="Selecionar módulo">
-          {modules.map((module, index) => (
+        <div className="mt-3 flex items-center justify-center gap-2" aria-label={c.select}>
+          {c.modules.map((copy, index) => (
             <button
-              key={module.name}
+              key={copy.name}
               type="button"
-              aria-label={`Ver módulo ${module.name}`}
+              aria-label={`${c.view} ${copy.name}`}
               aria-current={active === index ? "true" : undefined}
               onClick={() => setActive(index)}
               className={`h-2.5 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E63946] ${
@@ -419,7 +306,7 @@ export default function ModulosCarousel() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <CtaButton>Agendar demonstração</CtaButton>
+          <CtaButton>{c.cta}</CtaButton>
         </div>
       </div>
     </section>

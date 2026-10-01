@@ -1,5 +1,7 @@
 import { Instagram } from "lucide-react";
 
+import { useI18n } from "@/i18n";
+
 type InstagramProfile = {
   handle: string;
   name: string;
@@ -23,6 +25,7 @@ const PROFILES: InstagramProfile[] = [
 ];
 
 function InstagramCarousel({ profile }: { profile: InstagramProfile }) {
+  const { t } = useI18n();
   return (
     <div className="min-w-0 rounded-[34px] border border-black/5 bg-white p-6 shadow-[0_30px_90px_-62px_rgba(17,17,17,0.85)] md:p-8">
       <div className="flex items-center justify-between gap-4">
@@ -41,7 +44,7 @@ function InstagramCarousel({ profile }: { profile: InstagramProfile }) {
           rel="noreferrer"
           className="text-xs font-semibold uppercase tracking-[0.14em] text-primary hover:underline"
         >
-          Seguir
+          {t.universo.follow}
         </a>
       </div>
 
@@ -49,7 +52,7 @@ function InstagramCarousel({ profile }: { profile: InstagramProfile }) {
         <iframe
           src={profile.embedUrl}
           scrolling="no"
-          title={`Posts from Instagram - ${profile.name}`}
+          title={`${t.universo.iframeTitle} - ${profile.name}`}
           className="block h-full w-full rounded-2xl border-0"
         />
       </div>
@@ -58,6 +61,7 @@ function InstagramCarousel({ profile }: { profile: InstagramProfile }) {
 }
 
 export function UniversoSuperfastSection() {
+  const { t } = useI18n();
   return (
     <section className="bg-[#F8F8F6] py-24 text-ink md:py-32">
       <div className="container-x mx-auto max-w-[1240px]">
@@ -65,12 +69,12 @@ export function UniversoSuperfastSection() {
           <div>
             <div className="mb-5 flex items-center gap-3">
               <div className="h-px w-10 bg-primary" />
-              <span className="eyebrow text-primary">Universo Superfast</span>
+              <span className="eyebrow text-primary">{t.universo.kicker}</span>
             </div>
-            <h2 className="max-w-3xl text-4xl md:text-6xl">Acompanhe o dia a dia da Super Fast no Instagram.</h2>
+            <h2 className="max-w-3xl text-4xl md:text-6xl">{t.universo.title}</h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-ink-soft">
-            Bastidores, dicas de gestão e histórias de oficinas direto dos nossos perfis oficiais.
+            {t.universo.text}
           </p>
         </div>
 

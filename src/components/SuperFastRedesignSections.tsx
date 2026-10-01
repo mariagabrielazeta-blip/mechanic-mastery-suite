@@ -23,12 +23,9 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import { CtaButton } from "@/components/CtaButton";
-import { implementationSteps } from "@/data/implementation";
+import { useI18n, whatsappUrl } from "@/i18n";
 
 type ScheduleHandler = () => void;
-
-const WHATSAPP_URL =
-  "https://wa.me/5551984277489?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20sobre%20o%20Super%20Fast.";
 
 const DEMO_FORM_RECIPIENTS = ["atendimento@superfast.com.br", "igor@superfast.com.br"];
 
@@ -470,12 +467,14 @@ export function ZetaCredibilitySection() {
 }
 
 export function ImplementationVisualSection() {
+  const { t } = useI18n();
+  const implementationSteps = t.implementation.steps;
   return (
     <section id="implantacao" className="relative overflow-hidden border-y border-black/5 bg-[#ECECE8] py-28 text-ink md:py-36">
       <div className={container}>
         <SectionIntro
-          eyebrow="Implantação"
-          title="Implante o novo sistema da sua oficina de reparação automotiva, sem parar a operação."
+          eyebrow={t.implementation.kicker}
+          title={t.implementation.title}
         />
         <div className="mt-16 grid gap-8 md:grid-cols-3 md:gap-4 lg:grid-cols-6">
           {implementationSteps.map((step, index) => (
@@ -494,7 +493,7 @@ export function ImplementationVisualSection() {
         </div>
         <div className="mt-14 flex justify-center">
           <CtaButton variant="primary" href="#contato">
-            Quero começar minha implantação
+            {t.implementation.cta}
           </CtaButton>
         </div>
       </div>
@@ -505,6 +504,7 @@ export function ImplementationVisualSection() {
 type DemoFormProps = { compact?: boolean; onSuccess?: () => void };
 
 export function DemoForm({ compact = false, onSuccess }: DemoFormProps) {
+  const { t, lang } = useI18n();
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [values, setValues] = useState({
@@ -519,7 +519,7 @@ export function DemoForm({ compact = false, onSuccess }: DemoFormProps) {
   const required = [values.name, values.company, values.phone, values.city];
   const next = () => {
     if (required.some((value) => !value.trim()))
-      return setError("Preencha os campos para solicitar a demonstração.");
+      return setError(t.form.error);
     setError("");
     setLoading(true);
 
@@ -544,9 +544,9 @@ export function DemoForm({ compact = false, onSuccess }: DemoFormProps) {
     return (
       <div className="rounded-3xl border border-primary/30 bg-primary/10 p-8 text-center">
         <CheckCircle2 className="mx-auto h-10 w-10 text-primary" />
-        <h3 className="mt-4 text-3xl text-white">Solicitação enviada.</h3>
+        <h3 className="mt-4 text-3xl text-white">{t.form.sentTitle}</h3>
         <p className="mt-3 text-sm leading-relaxed text-white/65">
-          Abrimos seu e-mail com a solicitação preenchida. Basta confirmar o envio para nossa equipe entrar em contato.
+          {t.form.sentText}
         </p>
       </div>
     );
@@ -561,26 +561,26 @@ export function DemoForm({ compact = false, onSuccess }: DemoFormProps) {
       }}
     >
       <div className="mb-8">
-        <span className="eyebrow text-primary">Solicite sua demonstração gratuita</span>
+        <span className="eyebrow text-primary">{t.form.eyebrow}</span>
         <p className="mt-3 text-sm leading-relaxed text-white/60">
-          Poucos dados. Uma conversa rápida sobre a rotina da sua oficina mecânica.
+          {t.form.intro}
         </p>
       </div>
       <div className={`grid gap-4 ${compact ? "" : "md:grid-cols-2"}`}>
-        <Field label="Nome" value={values.name} onChange={(value) => update("name", value)} />
+        <Field label={t.form.name} value={values.name} onChange={(value) => update("name", value)} />
         <Field
-          label="Empresa"
+          label={t.form.company}
           value={values.company}
           onChange={(value) => update("company", value)}
         />
         <Field
-          label="WhatsApp"
+          label={t.form.whatsapp}
           value={values.phone}
           onChange={(value) => update("phone", value.replace(/[^0-9()+ .-]/g, ""))}
           inputMode="tel"
         />
         <Field
-          label="Cidade"
+          label={t.form.city}
           value={values.city}
           onChange={(value) => update("city", value)}
         />
@@ -596,7 +596,7 @@ export function DemoForm({ compact = false, onSuccess }: DemoFormProps) {
           disabled={loading}
           className="inline-flex w-full items-center justify-center gap-3 rounded-[14px] bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white hover:text-ink disabled:opacity-60 md:w-auto"
         >
-          {loading ? "A enviar..." : "Agendar demonstração"}
+          {loading ? t.form.sending : t.form.submit}
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>
@@ -700,6 +700,7 @@ export function DemoModal({ open, onClose }: { open: boolean; onClose: () => voi
 }
 
 export function FinalCTA({ onSchedule }: { onSchedule: ScheduleHandler }) {
+  const WHATSAPP_URL = whatsappUrl(useI18n().t);
   return (
     <section id="contato" className={`${sectionBase} min-h-[90svh] py-24 md:py-32`}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(209,18,18,0.22),transparent_35%)]" />
